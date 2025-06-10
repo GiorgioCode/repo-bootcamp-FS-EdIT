@@ -42,7 +42,7 @@ El repositorio está organizado de la siguiente manera:
 
 -   [Plataforma de Educación IT](https://www.educacionit.com/)
 -   [Documentación oficial de las tecnologías](https://developer.mozilla.org/)
--   [Plataforma Alumni de Educación IT (Contenido y clases grabadas)](https://alumni.education//)
+-   [Plataforma Alumni de Educación IT (Contenido y clases grabadas)](https://alumni.education/login/)
 
 ---
 
