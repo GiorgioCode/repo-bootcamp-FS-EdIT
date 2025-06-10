@@ -22,30 +22,28 @@ El repositorio está organizado de la siguiente manera:
 
 ## 🔍 Contenidos del Bootcamp
 
-- **Front-End**: HTML5, CSS3, JavaScript, React
-- **Back-End**: Node.js, Express, APIs RESTful
-- **Base de Datos**: MongoDB
-- **DevOps**: Git, GitHub, Deployment
-- **Proyectos Prácticos**: Aplicaciones reales para el portfolio
+-   **Front-End**: HTML5, CSS3, JavaScript, React
+-   **Back-End**: Node.js, Express, APIs RESTful
+-   **Base de Datos**: MongoDB
+-   **DevOps**: Git, GitHub, Deployment
+-   **Proyectos Prácticos**: Aplicaciones reales para el portfolio
 
 ## 💡 Cómo usar este repositorio
 
 1. Clona este repositorio en tu máquina local
-   ```bash
-   git clone https://github.com/GiorgioCode/repo-bootcamp-FS-EdIT.git
-   ```
+
+    ```bash
+    git clone https://github.com/GiorgioCode/repo-bootcamp-FS-EdIT.git
+    ```
 
 2. Navega a la carpeta de la clase correspondiente
 
 ## 🔗 Enlaces útiles
 
-- [Plataforma de Educación IT](https://www.educacionit.com/)
-- [Documentación oficial de las tecnologías](https://developer.mozilla.org/)
-- [Comunidad de estudiantes](https://community.educacionit.com/)
-
+-   [Plataforma de Educación IT](https://www.educacionit.com/)
+-   [Documentación oficial de las tecnologías](https://developer.mozilla.org/)
+-   [Plataforma Alumni de Educación IT (Contenido y clases grabadas)](https://alumni.education//)
 
 ---
 
 ⭐ No olvides dar una estrella a este repositorio si te resulta útil! ⭐
-
-
