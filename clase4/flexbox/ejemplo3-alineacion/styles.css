@@ -1,0 +1,101 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.explicacion {
+    background-color: #f8f9fa;
+    padding: 5px 10px;
+    border-left: 3px solid #007bff;
+    font-family: monospace;
+    margin-top: 5px;
+}
+
+/* Contenedores básicos
+   - Todos los contenedores tienen display: flex
+   - Cada clase específica modifica la propiedad justify-content
+*/
+.contenedor {
+    display: flex;
+    background-color: #eee;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Contenedores altos para demostrar alineación vertical
+   - height: 150px fuerza una altura para mostrar el efecto de align-items
+*/
+.contenedor-alto {
+    display: flex;
+    background-color: #eee;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    height: 150px; /* Altura fija para demostrar alineación vertical */
+}
+
+/* Elementos dentro del contenedor flex */
+.caja {
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* Una caja más alta para demostrar alineación vertical */
+.alto {
+    height: 100px;
+}
+
+/* Variaciones de justify-content
+   - flex-start: alinea elementos al inicio del contenedor
+   - center: alinea elementos al centro del contenedor
+   - flex-end: alinea elementos al final del contenedor
+   - space-between: distribuye elementos con espacio entre ellos
+*/
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+/* Variaciones de align-items
+   - flex-start: alinea elementos en la parte superior
+   - center: alinea elementos en el centro vertical
+   - flex-end: alinea elementos en la parte inferior
+*/
+.align-start {
+    align-items: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
+}

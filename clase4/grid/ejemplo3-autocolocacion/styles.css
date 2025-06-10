@@ -1,0 +1,137 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Grid con elementos de diferentes tamaños
+   - display: grid; → Activa el modo grid
+   - grid-template-columns: repeat(4, 1fr); → 4 columnas de igual tamaño
+   - grid-auto-rows: 100px; → Filas de 100px de alto por defecto
+*/
+.grid-posicionamiento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 100px;
+    gap: 10px;
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* Estilos para los elementos del grid */
+.item {
+    background-color: #16a085;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Item que ocupa 2 columnas
+   - grid-column: span 2; → Ocupa 2 columnas
+*/
+.item-ancho {
+    grid-column: span 2; /* Ocupa 2 columnas */
+    background-color: #27ae60;
+}
+
+/* Item que ocupa 2 filas
+   - grid-row: span 2; → Ocupa 2 filas
+*/
+.item-alto {
+    grid-row: span 2; /* Ocupa 2 filas */
+    background-color: #2980b9;
+}
+
+/* Item que ocupa 2x2
+   - grid-column: span 2; → Ocupa 2 columnas
+   - grid-row: span 2; → Ocupa 2 filas
+*/
+.item-grande {
+    grid-column: span 2; /* Ocupa 2 columnas */
+    grid-row: span 2;    /* Ocupa 2 filas */
+    background-color: #8e44ad;
+}
+
+/* Grid con posicionamiento específico
+   - grid-template-columns: repeat(4, 1fr); → 4 columnas de igual tamaño
+   - grid-template-rows: repeat(5, 80px); → 5 filas de 80px
+*/
+.grid-colocacion {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 80px);
+    gap: 10px;
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* Elementos con posicionamiento explícito
+   La notación grid-column: 1 / 5; significa que el elemento comienza
+   en la línea 1 y termina en la línea 5 de la cuadrícula
+   (ocupando las columnas 1, 2, 3 y 4)
+*/
+.item-colocado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Cabecera: desde columna 1 a columna 4, en la fila 1 */
+.header {
+    grid-column: 1 / 5; /* Desde la línea 1 hasta la línea 5 (4 columnas) */
+    grid-row: 1 / 2;    /* En la fila 1 */
+    background-color: #e74c3c;
+}
+
+/* Barra lateral: columna 1, desde fila 2 hasta fila 4 */
+.sidebar {
+    grid-column: 1 / 2; /* En la columna 1 */
+    grid-row: 2 / 5;    /* Desde la fila 2 a la 4 */
+    background-color: #3498db;
+}
+
+/* Contenido principal: desde columna 2 a 4, desde fila 2 a 4 */
+.contenido {
+    grid-column: 2 / 5; /* Desde la columna 2 a la 4 */
+    grid-row: 2 / 5;    /* Desde la fila 2 a la 4 */
+    background-color: #2ecc71;
+}
+
+/* Pie de página: desde columna 1 a columna 4, en la fila 5 */
+.footer {
+    grid-column: 1 / 5; /* Desde la columna 1 a la 4 */
+    grid-row: 5 / 6;    /* En la fila 5 */
+    background-color: #34495e;
+}
+
+/* Explicaciones y notas */
+.explicacion {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-left: 5px solid #16a085;
+    margin-top: 20px;
+}
+
+.explicacion ul {
+    line-height: 1.6;
+}

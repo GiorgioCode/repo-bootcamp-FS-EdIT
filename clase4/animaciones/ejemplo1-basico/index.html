@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaciones CSS Básicas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Animaciones CSS Básicas</h1>
+        <p class="descripcion">Ejemplos de animaciones fundamentales en CSS</p>
+    </header>
+    
+    <div class="contenedor">
+        <!-- Sección 1: Animación de transformación -->
+        <section class="seccion">
+            <h2>Transformaciones</h2>
+            <!-- El elemento con la clase "caja" tendrá animaciones de transformación -->
+            <div class="caja transformacion">
+                <span>Hover Me</span>
+            </div>
+            <div class="explicacion">
+                <h3>¿Qué está pasando?</h3>
+                <p>Las <code>transform</code> permiten modificar la posición, tamaño y forma de un elemento sin afectar el flujo del documento.</p>
+                <p>En este ejemplo, al pasar el cursor, el elemento:</p>
+                <ul>
+                    <li><code>scale(1.2)</code>: Aumenta su tamaño al 120%</li>
+                    <li><code>rotate(5deg)</code>: Rota ligeramente</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Sección 2: Transiciones -->
+        <section class="seccion">
+            <h2>Transiciones</h2>
+            <!-- El elemento tendrá transiciones suaves entre estados -->
+            <div class="caja transicion">
+                <span>Hover Me</span>
+            </div>
+            <div class="explicacion">
+                <h3>¿Qué está pasando?</h3>
+                <p>Las <code>transition</code> permiten controlar cómo un elemento cambia de un estado a otro de forma gradual.</p>
+                <p>Componentes de una transición:</p>
+                <ul>
+                    <li><code>transition-property</code>: Qué propiedad animar (background, color, etc.)</li>
+                    <li><code>transition-duration</code>: Cuánto durará la animación</li>
+                    <li><code>transition-timing-function</code>: La curva de velocidad (ease, linear, etc.)</li>
+                    <li><code>transition-delay</code>: Tiempo de espera antes de iniciar</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Sección 3: Keyframes -->
+        <section class="seccion">
+            <h2>Keyframes</h2>
+            <!-- Elemento con animación usando @keyframes -->
+            <div class="caja keyframe">
+                <span>Animación</span>
+            </div>
+            <div class="explicacion">
+                <h3>¿Qué está pasando?</h3>
+                <p>Los <code>@keyframes</code> permiten crear animaciones complejas definiendo estados en diversos puntos del tiempo.</p>
+                <p>Propiedades de animation:</p>
+                <ul>
+                    <li><code>animation-name</code>: Nombre de la animación (definida con @keyframes)</li>
+                    <li><code>animation-duration</code>: Duración de un ciclo completo</li>
+                    <li><code>animation-timing-function</code>: Curva de velocidad</li>
+                    <li><code>animation-delay</code>: Tiempo antes de iniciar</li>
+                    <li><code>animation-iteration-count</code>: Número de repeticiones (infinite)</li>
+                    <li><code>animation-direction</code>: Dirección (normal, reverse, alternate)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Sección 4: Animación combinada -->
+        <section class="seccion">
+            <h2>Animación Combinada</h2>
+            <!-- Elemento con múltiples animaciones -->
+            <div class="caja combinada">
+                <span>Compleja</span>
+            </div>
+            <div class="explicacion">
+                <h3>¿Qué está pasando?</h3>
+                <p>Podemos aplicar múltiples animaciones a un elemento para efectos complejos.</p>
+                <p>Esta caja utiliza:</p>
+                <ul>
+                    <li>Varias animaciones con diferentes duraciones</li>
+                    <li>Diferentes delays para cada animación</li>
+                    <li>Múltiples propiedades animadas simultáneamente</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="navegacion">
+            <a href="../ejemplo2-timing-functions/index.html">Siguiente ejemplo: Funciones de temporización</a>
+        </div>
+        <p>Curso de Animaciones CSS - Bootcamp 2025</p>
+    </footer>
+</body>
+</html>

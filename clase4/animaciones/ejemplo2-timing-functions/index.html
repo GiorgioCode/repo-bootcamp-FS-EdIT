@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones de Temporización CSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Funciones de Temporización en CSS</h1>
+        <p class="descripcion">Explorando cómo controlar la velocidad de las animaciones</p>
+    </header>
+    
+    <div class="contenedor">
+        <!-- Introducción a las funciones de temporización -->
+        <section class="intro">
+            <h2>¿Qué son las funciones de temporización?</h2>
+            <p>Las funciones de temporización (timing functions) definen <strong>cómo progresa una animación a lo largo de su duración</strong>. Determinan si la animación avanza a velocidad constante, si acelera al inicio, si desacelera al final, etc.</p>
+            <p>Estas funciones se aplican mediante las propiedades <code>transition-timing-function</code> y <code>animation-timing-function</code>.</p>
+        </section>
+        
+        <!-- Panel de visualización de las animaciones -->
+        <div class="visualizacion">
+            <h2>Comparativa Visual</h2>
+            <p class="instrucciones">Haz clic en el botón para iniciar todas las animaciones al mismo tiempo y comparar</p>
+            <button id="iniciar">Iniciar Animaciones</button>
+            
+            <div class="pista">
+                <div class="marcador inicio">Inicio</div>
+                <div class="marcador fin">Fin</div>
+            </div>
+            
+            <!-- Cajas con diferentes timing functions -->
+            <div class="caja-contenedor">
+                <div class="caja ease">
+                    <div class="etiqueta">ease</div>
+                </div>
+                <div class="grafica">Comienza rápido, termina lento</div>
+            </div>
+            
+            <div class="caja-contenedor">
+                <div class="caja linear">
+                    <div class="etiqueta">linear</div>
+                </div>
+                <div class="grafica">Velocidad constante</div>
+            </div>
+            
+            <div class="caja-contenedor">
+                <div class="caja ease-in">
+                    <div class="etiqueta">ease-in</div>
+                </div>
+                <div class="grafica">Lento al inicio, acelera al final</div>
+            </div>
+            
+            <div class="caja-contenedor">
+                <div class="caja ease-out">
+                    <div class="etiqueta">ease-out</div>
+                </div>
+                <div class="grafica">Rápido al inicio, desacelera al final</div>
+            </div>
+            
+            <div class="caja-contenedor">
+                <div class="caja ease-in-out">
+                    <div class="etiqueta">ease-in-out</div>
+                </div>
+                <div class="grafica">Lento al inicio y al final, rápido en medio</div>
+            </div>
+            
+            <div class="caja-contenedor">
+                <div class="caja cubic-bezier">
+                    <div class="etiqueta">cubic-bezier</div>
+                </div>
+                <div class="grafica">Personalizada (0.68, -0.55, 0.27, 1.55)</div>
+            </div>
+            
+            <div class="caja-contenedor">
+                <div class="caja steps">
+                    <div class="etiqueta">steps(5)</div>
+                </div>
+                <div class="grafica">Animación en 5 pasos discretos</div>
+            </div>
+        </div>
+        
+        <!-- Explicación de las Curvas de Bézier -->
+        <section class="explicacion">
+            <h2>Curvas de Bézier Cúbicas</h2>
+            <div class="bezier-info">
+                <div class="bezier-img">
+                    <!-- Representación visual de una curva de Bézier -->
+                    <div class="bezier-curve">
+                        <div class="curve"></div>
+                        <div class="point p1"></div>
+                        <div class="point p2"></div>
+                    </div>
+                </div>
+                
+                <div class="bezier-texto">
+                    <p>La función <code>cubic-bezier(x1, y1, x2, y2)</code> permite crear funciones de temporización personalizadas.</p>
+                    <p>Los cuatro valores definen dos puntos de control que determinan la forma de la curva:</p>
+                    <ul>
+                        <li><code>x1, y1</code>: Coordenadas del primer punto de control</li>
+                        <li><code>x2, y2</code>: Coordenadas del segundo punto de control</li>
+                    </ul>
+                    <p>Las coordenadas x típicamente van de 0 a 1 (representando el tiempo), mientras que las coordenadas y pueden tener cualquier valor (velocidad puede ser negativa, creando "rebotes").</p>
+                    <p><a href="https://cubic-bezier.com" target="_blank">Herramienta: Generador de cubic-bezier</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Función Steps -->
+        <section class="explicacion">
+            <h2>Función Steps</h2>
+            <p>La función <code>steps(n, jumpterm)</code> crea una animación escalonada en lugar de suave:</p>
+            <ul>
+                <li><code>n</code>: Número de pasos en los que se divide la animación</li>
+                <li><code>jumpterm</code>: Cuando se realiza el salto (start/end). Por defecto es "end".</li>
+            </ul>
+            <p>Es perfecta para:</p>
+            <ul>
+                <li>Animaciones de sprites (personajes en juegos)</li>
+                <li>Efectos de máquina de escribir</li>
+                <li>Cualquier animación que deba ocurrir en pasos discretos</li>
+            </ul>
+            
+            <!-- Ejemplo de animación steps para máquina de escribir -->
+            <div class="typing-demo">
+                <h3>Ejemplo: Efecto máquina de escribir</h3>
+                <div class="typewriter">
+                    <div class="text">Esto se escribe paso a paso</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="navegacion">
+            <a href="../ejemplo1-basico/index.html">Ejemplo Anterior: Básico</a>
+        </div>
+        <p>Curso de Animaciones CSS - Bootcamp 2025</p>
+    </footer>
+    
+    <script>
+        // JavaScript para iniciar las animaciones al hacer clic en el botón
+        document.getElementById('iniciar').addEventListener('click', function() {
+            // Quitar primero todas las clases animando, para reiniciar
+            document.querySelectorAll('.caja').forEach(function(caja) {
+                caja.classList.remove('animando');
+            });
+            
+            // Pequeña pausa para asegurar que la animación se reinicia correctamente
+            setTimeout(function() {
+                document.querySelectorAll('.caja').forEach(function(caja) {
+                    caja.classList.add('animando');
+                });
+            }, 50);
+        });
+    </script>
+</body>
+</html>

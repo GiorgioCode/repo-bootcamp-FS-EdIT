@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Autocolocación</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Grid con Colocación y Dimensión Manual</h1>
+    
+    <!-- Contenedor grid con elementos posicionados manualmente -->
+    <div class="grid-posicionamiento">
+        <div class="item item-normal">1</div>
+        <div class="item item-normal">2</div>
+        <div class="item item-normal">3</div>
+        <div class="item item-ancho">4: Ocupa 2 columnas</div>
+        <div class="item item-normal">5</div>
+        <div class="item item-alto">6: Ocupa<br>2 filas</div>
+        <div class="item item-normal">7</div>
+        <div class="item item-normal">8</div>
+        <div class="item item-grande">9: Ocupa 2x2</div>
+        <div class="item item-normal">10</div>
+        <div class="item item-normal">11</div>
+        <div class="item item-normal">12</div>
+    </div>
+    
+    <h2>Colocación Específica</h2>
+    <div class="grid-colocacion">
+        <div class="item-colocado header">Cabecera (1,1) hasta (4,1)</div>
+        <div class="item-colocado sidebar">Lateral<br>(1,2) hasta<br>(1,4)</div>
+        <div class="item-colocado contenido">Contenido Principal (2,2) hasta (4,4)</div>
+        <div class="item-colocado footer">Pie de página (1,5) hasta (4,5)</div>
+    </div>
+    
+    <div class="explicacion">
+        <h2>Características de la Autocolocación y Posicionamiento:</h2>
+        <ul>
+            <li>Control preciso de ubicación mediante grid-column y grid-row</li>
+            <li>Elementos pueden extenderse varias filas o columnas</li>
+            <li>Los elementos se colocan automáticamente evitando sobreposición</li>
+            <li>Puedes mezclar elementos posicionados y autocolocados</li>
+        </ul>
+    </div>
+</body>
+</html>
