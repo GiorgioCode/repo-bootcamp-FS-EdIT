@@ -1,0 +1,250 @@
+/**
+ * Estilos generales
+ * -------------------
+ * Reset básico para eliminar márgenes y rellenos predeterminados del navegador
+ * y asegurar un cálculo de dimensiones consistente con box-sizing
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto total del elemento */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+header, footer {
+    text-align: center;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/**
+ * GALERÍA ESTILO MASONRY CON CSS GRID
+ * --------------------------------
+ * Implementación moderna de un layout tipo "masonry" (efecto ladrillos/muro)
+ * utilizando únicamente CSS Grid sin JavaScript.
+ * 
+ * Referencias:
+ * - Artículo de CSS-Tricks sobre Masonry con Grid: https://css-tricks.com/piecing-together-approaches-for-a-css-masonry-layout/
+ * - MDN Web Docs - CSS Grid: https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout
+ */
+.gallery {
+    /* Configuración principal del grid */
+    display: grid; /* Activa el modelo de layout CSS Grid */
+    
+    /* Define columnas automáticas que se ajustan al espacio disponible: 
+     * - auto-fill: crea tantas columnas como quepan en el contenedor
+     * - minmax(250px, 1fr): cada columna tendrá mínimo 250px y máximo 1 fracción del espacio disponible
+     * Esto permite que las columnas se redimensionen automáticamente en diseños responsivos
+     */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    
+    /* Esta es la clave del efecto masonry:
+     * Define una altura base muy pequeña (10px) para cada fila del grid
+     * Las filas se generarán automáticamente según el contenido
+     * Cada elemento definirá cuántas de estas filas ocupa con grid-row-end: span X
+     */
+    grid-auto-rows: 10px;
+    
+    /* Espacio entre los elementos del grid (tanto horizontal como vertical) */
+    grid-gap: 15px;
+}
+
+/**
+ * Elementos de la galería
+ * ---------------------
+ * Cada .gallery-item representa un contenedor de imagen individual dentro de la cuadrícula
+ */
+.gallery-item {
+    /* CONFIGURACIÓN MASONRY: 
+     * Esta propiedad es esencial para el efecto masonry
+     * - grid-row-end: span 40 significa que este elemento ocupará 40 filas de grid
+     * - Como cada fila mide 10px (definido en grid-auto-rows), esto resulta en ~400px de alto
+     * - El cálculo es: 400px ÷ 10px = 40 unidades de grid
+     * 
+     * Este valor determina la altura visual del elemento en la cuadrícula
+     */
+    grid-row-end: span 40;
+    
+    /* Otras propiedades de estilo */
+    position: relative;     /* Necesario para posicionar el overlay */
+    overflow: hidden;       /* Previene que imágenes o contenido sobresalgan del contenedor */
+    border-radius: 8px;     /* Esquinas redondeadas para los contenedores de imágenes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para dar profundidad */
+    background-color: #fff; /* Fondo por si hay problemas con la carga de la imagen */
+    
+    /* Transiciones suaves para efectos hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/**
+ * ESTILOS DE LAS IMÁGENES
+ * ---------------------
+ * Configura cómo se muestran las imágenes dentro de sus contenedores
+ */
+.gallery-item img {
+    width: 100%;  /* La imagen ocupa todo el ancho del contenedor */
+    height: 100%; /* La imagen ocupa todo el alto del contenedor */
+    
+    /* object-fit: cover es crucial aquí:
+     * - Asegura que la imagen cubra todo su contenedor sin deformarse
+     * - Mantiene la proporción (aspect ratio) original de la imagen
+     * - Recorta la imagen si es necesario para llenar el espacio
+     * 
+     * Esta propiedad es similar a background-size: cover pero para elementos <img>
+     * Ref: https://developer.mozilla.org/es/docs/Web/CSS/object-fit
+     */
+    object-fit: cover;
+    
+    display: block; /* Elimina el espacio inferior que pueden tener las imágenes inline */
+    
+    /* Transición suave para el efecto zoom en hover */
+    transition: transform 0.5s ease;
+}
+
+/**
+ * EFECTOS DE INTERACCIÓN (HOVER)
+ * ---------------------------
+ * Mejoran la experiencia de usuario al interactuar con los elementos de la galería
+ * Ref: https://developer.mozilla.org/es/docs/Web/CSS/:hover
+ */
+
+/* Efecto de elevación al pasar el cursor */
+.gallery-item:hover {
+    /* Mueve el elemento ligeramente hacia arriba (5px) */
+    transform: translateY(-5px);
+    
+    /* Aumenta y suaviza la sombra para dar sensación de elevación */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    
+    /* La transición definida antes hace que este cambio sea animado */
+}
+
+/* Efecto de zoom suave en la imagen al pasar el cursor */
+.gallery-item:hover img {
+    /* Aumenta ligeramente el tamaño de la imagen (5%) */
+    transform: scale(1.05);
+    
+    /* Junto con overflow: hidden en .gallery-item, crea un efecto de zoom contenido */
+}
+
+/**
+ * OVERLAY CON INFORMACIÓN
+ * --------------------
+ * Capa semitransparente que aparece sobre cada imagen al pasar el cursor
+ * Muestra información adicional y mejora la experiencia visual
+ */
+.overlay {
+    /* Posicionamiento absoluto respecto al .gallery-item (que tiene position: relative) */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    /* Degradado vertical que va de negro semitransparente en la parte inferior a transparente arriba
+     * Esto crea un efecto de viñeteado que mejora la legibilidad del texto superpuesto */
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    
+    color: white; /* Color del texto para contraste sobre el degradado oscuro */
+    padding: 20px; /* Espacio interno para el contenido del overlay */
+    
+    /* Inicialmente invisible */
+    opacity: 0;
+    
+    /* Transición suave para la aparición/desaparición */
+    transition: opacity 0.3s ease;
+}
+
+/* Hace visible el overlay cuando se pasa el cursor sobre el elemento */
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Estilo del texto dentro del overlay */
+.overlay p {
+    font-size: 1.1rem;    /* Tamaño del texto ligeramente mayor */
+    font-weight: 500;      /* Semi-negrita para mejor legibilidad */
+    
+    /* Sombra sutil al texto para mejorar contraste y legibilidad */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/**
+ * DISEÑO RESPONSIVO CON MEDIA QUERIES
+ * -------------------------------
+ * Adapta la galería para diferentes tamaños de pantalla
+ * Ref: https://developer.mozilla.org/es/docs/Web/CSS/Media_Queries
+ */
+
+/* Tablets y pantallas medianas (hasta 768px) */
+@media (max-width: 768px) {
+    .gallery {
+        /* Reduce el tamaño mínimo de columnas para pantallas más pequeñas */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .wide {
+        /* Desactiva el efecto de anchura doble en pantallas medianas:
+         * - grid-column-end: auto restaura el comportamiento predeterminado
+         * - Todos los elementos ocuparán una sola columna, independientemente de la clase .wide
+         */
+        grid-column-end: auto;
+        
+        /* Esto permite un mejor aprovechamiento del espacio en pantallas más pequeñas */
+    }
+}
+
+/* Smartphones y pantallas pequeñas (hasta 480px) */
+@media (max-width: 480px) {
+    .gallery {
+        /* Ajustes adicionales para pantallas muy pequeñas */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Columnas aún más estrechas */
+        grid-gap: 10px; /* Reduce el espacio entre elementos para aprovechar mejor el espacio */
+    }
+    
+    /* Reduce la altura de los elementos estándar */
+    .gallery-item {
+        /* 30 unidades × 10px = 300px de alto aproximadamente */
+        grid-row-end: span 30;
+    }
+    
+    /* Ajusta la altura de los elementos verticales */
+    .tall {
+        /* 45 unidades × 10px = 450px de alto aproximadamente */
+        grid-row-end: span 45;
+        
+        /* Mantiene la proporción visual pero con dimensiones más compactas */
+    }
+}

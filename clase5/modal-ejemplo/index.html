@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Modal con CSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- 
+    FUNCIONAMIENTO DE MODAL SIN JAVASCRIPT
+    
+    Este ejemplo demuestra cómo crear un modal interactivo usando solamente HTML y CSS,
+    sin necesidad de JavaScript. La técnica principal utilizada es el "checkbox hack".
+
+    PRINCIPIOS BÁSICOS:
+    1. Un checkbox oculto actúa como "interruptor de estado" (abierto/cerrado)
+    2. Etiquetas <label> vinculadas al checkbox permiten cambiar su estado (marcado/no marcado)
+    3. Selectores CSS avanzados (como :checked y ~) controlan la visualización del modal
+-->
+<body>
+    <div class="container">
+        <h1>Ejemplo Simple de Modal (sin JavaScript)</h1>
+        <p>Haz clic en el botón para abrir una ventana modal</p>
+        
+        <!-- 
+            PARTE 1: EL CHECKBOX OCULTO
+            
+            Este checkbox es el elemento clave para el funcionamiento sin JavaScript:
+            - Se oculta mediante CSS (display: none)
+            - Su ID (modal-toggle) es esencial ya que conecta todos los elementos interactivos
+            - Su estado (checked/unchecked) controla si el modal está visible o no
+            - NO aparece visualmente en la página, pero controla la lógica del modal
+        -->
+        <input type="checkbox" id="modal-toggle" class="modal-toggle">
+        
+        <!-- 
+            PARTE 2: BOTÓN PARA ABRIR EL MODAL
+            
+            Este no es un botón real, sino una etiqueta <label> estilizada como botón:
+            - El atributo "for" la vincula al checkbox por su ID
+            - Al hacer clic en esta etiqueta, se marca automáticamente el checkbox
+            - No requiere JavaScript para esta interacción, es nativo de HTML
+        -->
+        <label for="modal-toggle" class="button open-button">Abrir Modal</label>
+        
+        <!-- 
+            PARTE 3: EL MODAL
+            
+            Estructura del modal que está oculto inicialmente:
+            - Por defecto tiene opacity: 0 y visibility: hidden en CSS
+            - Se muestra cuando el checkbox está marcado usando el selector: 
+              .modal-toggle:checked ~ .modal { ... }
+            - El selector ~ (hermano general) busca elementos que comparten el mismo padre
+        -->
+        <div class="modal">
+            <!-- 
+                PARTE 4: CONTENIDO DEL MODAL
+                
+                Estructura interna del modal con cabecera, cuerpo y pie:
+                - La posición del contenido se controla mediante CSS
+                - La animación de entrada se activa cuando el checkbox está marcado
+            -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- 
+                        PARTE 5: BOTÓN X PARA CERRAR
+                        
+                        Otra etiqueta label vinculada al mismo checkbox:
+                        - Al hacer clic aquí, se desmarca el checkbox
+                        - Esto hace que el modal se oculte nuevamente
+                    -->
+                    <label for="modal-toggle" class="close">&times;</label>
+                    <h2>Ventana Modal</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Este es un ejemplo simple de una ventana modal usando solamente HTML y CSS.</p>
+                    <p>Este modal utiliza la técnica "checkbox hack" para funcionar sin JavaScript.</p>
+                    <p>Puedes cerrar esta ventana haciendo clic en la X o en el botón de cerrar.</p>
+                </div>
+                <div class="modal-footer">
+                    <!-- 
+                        PARTE 6: BOTÓN PARA CERRAR
+                        
+                        Similar al botón X, es otra etiqueta que desmarca el checkbox:
+                        - Tiene el mismo atributo for="modal-toggle"
+                        - Estilizada como botón pero funciona igual que la X
+                    -->
+                    <label for="modal-toggle" class="button close-button">Cerrar</label>
+                </div>
+            </div>
+            
+            <!-- 
+                PARTE 7: OVERLAY
+                
+                Capa semi-transparente que cubre toda la pantalla:
+                - También es una etiqueta label vinculada al checkbox
+                - Permite cerrar el modal al hacer clic en cualquier área fuera del contenido
+                - Proporciona el efecto de oscurecimiento del fondo
+                - En CSS tiene position: absolute y cubre todo el modal
+            -->
+            <label for="modal-toggle" class="modal-overlay"></label>
+        </div>
+    </div>
+    <!-- 
+        RESUMEN DEL FUNCIONAMIENTO:
+        
+        1. Al hacer clic en "Abrir Modal" se marca el checkbox oculto
+        2. CSS detecta el estado :checked y muestra el modal con .modal-toggle:checked ~ .modal
+        3. Al hacer clic en X, el botón Cerrar o el overlay, se desmarca el checkbox
+        4. CSS detecta el cambio y oculta el modal nuevamente
+        
+        Todo esto sucede sin una sola línea de JavaScript, utilizando:
+        - Estados nativos de HTML (checkbox checked/unchecked)
+        - Selectores avanzados de CSS (:checked, ~)
+        - Asociación nativa entre <label> y su control de formulario mediante el atributo "for"
+    -->
+</body>
+</html>
