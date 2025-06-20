@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase de Animaciones CSS</title>
+
+    <style>
+        /* ===== ESTILOS BASE ===== */
+        /* Reseteo básico para eliminar márgenes y paddings por defecto */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Incluye padding y border en el width total */
+        }
+
+        /* Estilos del body principal */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Gradiente de fondo */
+            min-height: 100vh;
+            /* Altura mínima de toda la ventana */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            /* Evita scroll horizontal */
+        }
+
+        /* Contenedor principal que organiza todas las animaciones */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Grid responsivo */
+            gap: 40px;
+            /* Espacio entre elementos */
+            padding: 40px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Contenedor individual para cada animación */
+        .animation-box {
+            background: rgba(255, 255, 255, 0.1);
+            /* Fondo semi-transparente */
+            backdrop-filter: blur(10px);
+            /* Efecto de cristal esmerilado */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            transition: transform 0.3s ease;
+            /* Transición suave para hover */
+        }
+
+        /* Efecto hover sutil en las cajas contenedoras */
+        .animation-box:hover {
+            transform: translateY(-5px);
+            /* Elevación ligera al hacer hover */
+        }
+
+        /* ===== ANIMACIÓN 1: REBOTE BÁSICO ===== */
+        /* Definimos los keyframes para un rebote vertical */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+                /* Posición inicial en Y */
+                animation-timing-function: ease-out;
+                /* Salida suave */
+            }
+
+            50% {
+                transform: translateY(-30px);
+                /* Sube 30px en el punto medio */
+                animation-timing-function: ease-in;
+                /* Entrada suave */
+            }
+
+            100% {
+                transform: translateY(0);
+                /* Regresa a posición inicial */
+            }
+        }
+
+        .bounce-ball {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #ff6b6b, #ee5a52);
+            /* Gradiente radial para efecto 3D */
+            border-radius: 50%;
+            /* Forma circular */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            /* Sombra para profundidad */
+            animation: bounce 1.2s ease-in-out infinite;
+            /* Aplica la animación infinitamente */
+        }
+
+        /* ===== ANIMACIÓN 2: ROTACIÓN CONTINUA ===== */
+        /* Keyframes para rotación completa de 0 a 360 grados */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+                /* Rotación inicial */
+            }
+
+            to {
+                transform: rotate(360deg);
+                /* Rotación final (una vuelta completa) */
+            }
+        }
+
+        .rotating-square {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            /* Gradiente diagonal */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: rotate 3s linear infinite;
+            /* Rotación lineal continua */
+        }
+
+        /* ===== ANIMACIÓN 3: PULSACIÓN CON ONDAS ===== */
+        /* Keyframes que combinan escala y box-shadow para efecto de onda */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                /* Tamaño normal */
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.8);
+                /* Sombra inicial */
+            }
+
+            50% {
+                transform: scale(1.1);
+                /* Aumenta 10% el tamaño */
+                box-shadow: 0 0 0 15px rgba(255, 107, 107, 0.3);
+                /* Sombra se expande */
+            }
+
+            100% {
+                transform: scale(1);
+                /* Vuelve al tamaño original */
+                box-shadow: 0 0 0 30px rgba(255, 107, 107, 0);
+                /* Sombra desaparece */
+            }
+        }
+
+        .pulse-circle {
+            width: 100px;
+            height: 100px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: pulse 2s ease-out infinite;
+            /* Pulsación cada 2 segundos */
+        }
+
+        /* ===== ANIMACIÓN 4: EFECTO CORAZÓN LATIENDO ===== */
+        /* Keyframes que imitan el latido de un corazón */
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            14% {
+                transform: scale(1.2);
+                /* Primer latido fuerte */
+            }
+
+            28% {
+                transform: scale(1);
+            }
+
+            42% {
+                transform: scale(1.2);
+                /* Segundo latido fuerte */
+            }
+
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        .heart {
+            width: 80px;
+            height: 80px;
+            background: #e74c3c;
+            position: relative;
+            transform: rotate(-45deg);
+            /* Rotación base para formar el corazón */
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        /* Pseudo-elementos para formar la shape del corazón */
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            background: #e74c3c;
+            border-radius: 50%;
+            /* Círculos que forman las partes superiores del corazón */
+        }
+
+        .heart::before {
+            top: -40px;
+            /* Posición del círculo izquierdo */
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 40px;
+            /* Posición del círculo derecho */
+        }
+
+        /* ===== ANIMACIÓN 5: CARGA SPINNER ===== */
+        /* Keyframes para rotación del spinner */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            /* Borde base transparente */
+            border-top: 4px solid #3498db;
+            /* Solo el borde superior es visible */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            /* Rotación constante */
+        }
+
+        /* ===== ANIMACIÓN 6: FLOTACIÓN SUAVE ===== */
+        /* Keyframes para movimiento vertical suave arriba y abajo */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+                /* Posiciones inicial y final */
+            }
+
+            50% {
+                transform: translateY(-20px);
+                /* Punto medio: sube 20px */
+            }
+        }
+
+        .floating-element {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            animation: float 3s ease-in-out infinite;
+            /* Flotación lenta y suave */
+        }
+
+        /* ===== ANIMACIÓN 7: ONDAS DE AGUA ===== */
+        /* Keyframes para efecto de ondas concéntricas */
+        @keyframes wave {
+            0% {
+                transform: scale(0);
+                /* Inicia sin tamaño */
+                opacity: 1;
+                /* Completamente visible */
+            }
+
+            100% {
+                transform: scale(4);
+                /* Se expande 4 veces */
+                opacity: 0;
+                /* Desaparece gradualmente */
+            }
+        }
+
+        .wave-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: rgba(52, 152, 219, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            /* Centra el elemento */
+            animation: wave 2s linear infinite;
+        }
+
+        /* Diferentes delays para crear múltiples ondas */
+        .wave:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .wave:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .wave:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        /* ===== ANIMACIÓN 8: RESPIRACIÓN (SCALE) ===== */
+        /* Keyframes que imitan un patrón de respiración */
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                /* Tamaño normal */
+            }
+
+            50% {
+                transform: scale(1.3);
+                /* Se expande como inhalando */
+            }
+        }
+
+        .breathing-circle {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #2ecc71, #27ae60);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(46, 204, 113, 0.5);
+            /* Brillo suave */
+            animation: breathe 4s ease-in-out infinite;
+            /* Respiración lenta */
+        }
+
+        /* ===== ANIMACIÓN 9: BAILE CUADRADO ===== */
+        /* Keyframes complejos que combinan múltiples transformaciones */
+        @keyframes dance {
+            0% {
+                transform: translateX(0) rotateZ(0deg) scale(1);
+                background: #e74c3c;
+                border-radius: 0%;
+            }
+
+            25% {
+                transform: translateX(30px) rotateZ(90deg) scale(0.8);
+                background: #f39c12;
+                border-radius: 25%;
+            }
+
+            50% {
+                transform: translateX(0) rotateZ(180deg) scale(1.2);
+                background: #2ecc71;
+                border-radius: 50%;
+            }
+
+            75% {
+                transform: translateX(-30px) rotateZ(270deg) scale(0.8);
+                background: #3498db;
+                border-radius: 25%;
+            }
+
+            100% {
+                transform: translateX(0) rotateZ(360deg) scale(1);
+                background: #e74c3c;
+                border-radius: 0%;
+            }
+        }
+
+        .dancing-square {
+            width: 60px;
+            height: 60px;
+            animation: dance 4s ease-in-out infinite;
+            /* Baile complejo */
+        }
+
+        /* ===== ANIMACIÓN 10: PÉNDULO ===== */
+        /* Keyframes que simulan el movimiento de un péndulo */
+        @keyframes pendulum {
+
+            0%,
+            100% {
+                transform: rotate(-30deg);
+                /* Posición inicial inclinada */
+            }
+
+            50% {
+                transform: rotate(30deg);
+                /* Posición opuesta */
+            }
+        }
+
+        .pendulum-container {
+            position: relative;
+            height: 120px;
+            width: 4px;
+            background: #34495e;
+            margin: 0 auto;
+            transform-origin: top center;
+            /* El punto de rotación está en la parte superior */
+            animation: pendulum 2s ease-in-out infinite;
+        }
+
+        .pendulum-weight {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: #e67e22;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== ANIMACIÓN 11: TEXTO BRILLANTE ===== */
+        /* Keyframes para efecto de brillo que se mueve por el texto */
+        @keyframes shine {
+            0% {
+                background-position: -200px 0;
+                /* Posición inicial del brillo fuera del texto */
+            }
+
+            100% {
+                background-position: 200px 0;
+                /* Posición final del brillo */
+            }
+        }
+
+        .shining-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            background: linear-gradient(90deg,
+                    #2c3e50 0%,
+                    #2c3e50 40%,
+                    #ffffff 50%,
+                    #2c3e50 60%,
+                    #2c3e50 100%);
+            /* Gradiente que simula el brillo */
+            background-size: 400px 100%;
+            /* Tamaño del gradiente */
+            background-repeat: no-repeat;
+            background-clip: text;
+            /* Aplica el fondo solo al texto */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Hace el texto transparente para mostrar el fondo */
+            animation: shine 3s ease-in-out infinite;
+            /* Brillo cada 3 segundos */
+        }
+
+        /* ===== ANIMACIÓN 12: MORPHING BLOB ===== */
+        /* Keyframes para cambio orgánico de forma */
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+                /* Forma orgánica inicial */
+            }
+
+            34% {
+                border-radius: 70% 30% 50% 50% / 30% 50% 50% 70%;
+                /* Primera transformación */
+            }
+
+            67% {
+                border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+                /* Segunda transformación */
+            }
+        }
+
+        .morphing-blob {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            animation: morph 8s ease-in-out infinite;
+            /* Morphing lento */
+        }
+
+        /* ===== RESPONSIVIDAD ===== */
+        /* Ajustes para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                /* Una sola columna en móviles */
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .animation-box {
+                padding: 20px;
+                min-height: 150px;
+            }
+
+            .shining-text {
+                font-size: 1.5rem;
+                /* Texto más pequeño en móviles */
+            }
+        }
+
+        /* ===== OPTIMIZACIONES DE PERFORMANCE ===== */
+        /* Preparación para animaciones que usan transform */
+        .bounce-ball,
+        .rotating-square,
+        .pulse-circle,
+        .heart,
+        .spinner,
+        .floating-element,
+        .wave,
+        .breathing-circle,
+        .dancing-square,
+        .pendulum-container,
+        .morphing-blob {
+            will-change: transform;
+            /* Optimiza las animaciones de transform */
+        }
+
+        /* Aceleración por hardware para mejor performance */
+        .animation-box>* {
+            transform: translateZ(0);
+            /* Fuerza el uso de GPU */
+        }
+
+        /* ===== ACCESIBILIDAD ===== */
+        /* Respeta las preferencias del usuario sobre movimiento reducido */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                /* Animaciones casi instantáneas */
+                animation-iteration-count: 1 !important;
+                /* Solo una iteración */
+                transition-duration: 0.01ms !important;
+                /* Transiciones instantáneas */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor principal que organiza todas las animaciones en grid -->
+    <div class="container">
+
+        <!-- Animación 1: Pelota que rebota -->
+        <div class="animation-box">
+            <div class="bounce-ball"></div>
+        </div>
+
+        <!-- Animación 2: Cuadrado que rota -->
+        <div class="animation-box">
+            <div class="rotating-square"></div>
+        </div>
+
+        <!-- Animación 3: Círculo que pulsa con ondas -->
+        <div class="animation-box">
+            <div class="pulse-circle"></div>
+        </div>
+
+        <!-- Animación 4: Corazón latiendo -->
+        <div class="animation-box">
+            <div class="heart"></div>
+        </div>
+
+        <!-- Animación 5: Spinner de carga -->
+        <div class="animation-box">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Animación 6: Elemento flotante -->
+        <div class="animation-box">
+            <div class="floating-element"></div>
+        </div>
+
+        <!-- Animación 7: Ondas de agua -->
+        <div class="animation-box">
+            <div class="wave-container">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+        </div>
+
+        <!-- Animación 8: Círculo que respira -->
+        <div class="animation-box">
+            <div class="breathing-circle"></div>
+        </div>
+
+        <!-- Animación 9: Cuadrado bailarín -->
+        <div class="animation-box">
+            <div class="dancing-square"></div>
+        </div>
+
+        <!-- Animación 10: Péndulo -->
+        <div class="animation-box">
+            <div class="pendulum-container">
+                <div class="pendulum-weight"></div>
+            </div>
+        </div>
+
+        <!-- Animación 11: Texto brillante -->
+        <div class="animation-box">
+            <div class="shining-text">SHINE</div>
+        </div>
+
+        <!-- Animación 12: Blob que cambia de forma -->
+        <div class="animation-box">
+            <div class="morphing-blob"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
