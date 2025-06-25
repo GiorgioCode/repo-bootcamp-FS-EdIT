@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo: position sticky</title>
+  <style>
+    /* Caja sticky: se comporta como relative hasta alcanzar el top, luego se pega */
+    .caja-sticky {
+      position: sticky;
+      top: 0;  /* punto de "pegado" */
+      background-color: darkorange;
+      padding: 10px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elemento con comportamiento sticky -->
+  <div class="caja-sticky">
+    Soy un elemento `sticky`. Me quedo pegado arriba al hacer scroll.
+  </div>
+
+  <!-- Contenido para probar el comportamiento sticky -->
+  <div style="height: 1500px;">
+    <p>Desplázate hacia abajo y verás que esta caja se "pega" arriba cuando la alcanzas.</p>
+  </div>
+
+</body>
+</html>

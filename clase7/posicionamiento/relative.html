@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo: position relative</title>
+  <style>
+    /* Esta caja se mueve respecto a su posición original */
+    .caja-relative {
+      position: relative;
+      top: 20px;   /* mueve la caja 20px hacia abajo */
+      left: 30px;  /* mueve la caja 30px a la derecha */
+      background-color: orange;
+      color: black;
+      padding: 10px;
+      border: 1px solid #000;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Caja con position: relative -->
+  <div class="caja-relative">
+    Esta caja usa `relative`: se desplaza sin salir del flujo del documento.
+  </div>
+
+</body>
+</html>
