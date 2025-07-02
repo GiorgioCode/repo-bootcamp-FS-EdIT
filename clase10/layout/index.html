@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <title>Ejemplo Bootstrap CDN - Sistema de Grid</title>
+</head>
+
+<body>
+    <h1>Titulo de prueba con Bootstrap 5</h1>
+    <!-- CO RO CO -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 text-center bg-primary text-white">50%</div>
+            <div class="col-6 text-center bg-success text-white">50%</div>
+        </div>
+        <!---
+        clase       dispositivo         ancho minimo
+        col-        extra pequeño       0 px
+        col-sm-     pequeños            576 px
+        col-md-     medianos            768 px
+        col-lg-     grandes             992 px
+        col-xl-     extra grande        1200 px
+        col-xxl-    xxl                 1400 px
+        -->
+        <hr class="m-5">
+        <div class="row">
+            <div class="col-12 col-md-6   col-lg-4          bg-primary text-white text-center ">Seccion Adaptable 1
+            </div>
+            <div class="col-12 col-md-6   col-lg-4         bg-success text-white text-center ">Seccion Adaptable 2</div>
+            <div class="col-12 col-md-12  col-lg-4          bg-danger text-white text-center ">Seccion Adaptable 3</div>
+        </div>
+        <hr class="m-5">
+        <div class="row">
+            <div class="col bg-primary text-white text-center ">Auto</div>
+            <div class="col bg-success text-white text-center ">Auto</div>
+            <div class="col bg-info text-white text-center ">Auto</div>
+        </div>
+        <hr class="m-5">
+        <div class="row">
+            <div class="col-6">
+                <div class="row gx-5">
+                    <div class="col-6 bg-primary text-white text-center">Columna Interior 1</div>
+                    <div class="col-6 bg-dark text-white text-center">Columna Interior 2</div>
+                </div>
+            </div>
+            <div class="col-6 bg-info text-white text-center ">Columa Exterior Derecha</div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
