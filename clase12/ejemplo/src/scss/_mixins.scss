@@ -1,0 +1,11 @@
+@mixin centrado-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin boton-estilo {
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
