@@ -1,0 +1,34 @@
+// _buttons.scss
+// Ejemplo de uso de @each y mixins para botones
+
+@use 'variables' as v; // Importa las variables SCSS con el prefijo v.
+@use 'mixins' as m;    // Importa los mixins SCSS con el prefijo m.
+@use 'sass:color';     // Importa el módulo nativo de color de Sass
+
+// Mapa de colores para los botones, usando variables definidas en _variables.scss
+$btn-colors: (
+  'primary': v.$primary,     // Azul principal
+  'secondary': v.$secondary, // Gris secundario
+  'success': v.$success,     // Verde éxito
+  'danger': v.$danger        // Rojo peligro
+);
+
+.btn {
+  padding: 0.5rem 1.25rem;           // Espaciado interno del botón
+  font-size: v.$font-size-base;      // Tamaño de fuente base definido en variables
+  border: none;                      // Sin borde por defecto
+  cursor: pointer;                   // Cursor tipo puntero al pasar el mouse
+  @include m.rounded(0.5rem);        // Aplica borde redondeado usando el mixin
+  transition: background 0.2s;       // Suaviza el cambio de color de fondo
+  color: v.$white;                   // Color de texto blanco
+}
+
+// Genera una clase para cada tipo de botón usando @each
+@each $name, $color in $btn-colors {
+  .btn-#{$name} {                      // Crea una clase .btn-primary, .btn-secondary, etc.
+    background: $color;                // Color de fondo según el mapa
+    &:hover {                          // Al pasar el mouse...
+      background: color.adjust($color, $lightness: -10%); // Oscurece el fondo un 10%
+    }
+  }
+}

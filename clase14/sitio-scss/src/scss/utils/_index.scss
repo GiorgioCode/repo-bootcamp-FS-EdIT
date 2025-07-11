@@ -1,0 +1,9 @@
+// ===============================
+// Índice de utilidades
+// Este archivo re-exporta variables, mixins y funciones para uso global
+// ===============================
+// Este archivo sirve como punto de entrada para importar utilidades SCSS en otros archivos
+
+@forward 'variables'; // Variables globales CSS, re-exportadas para uso en todo el proyecto
+@forward 'mixins';    // Mixins reutilizables, re-exportadas para uso en todo el proyecto
+@forward 'functions'; // Funciones SCSS personalizadas, re-exportadas para uso en todo el proyecto

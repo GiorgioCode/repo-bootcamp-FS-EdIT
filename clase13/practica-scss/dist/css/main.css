@@ -1,0 +1,164 @@
+.btn-primario {
+  background-color: #3498db;
+  color: rgb(4, 90, 101);
+  padding: 0.75rem;
+  border: none;
+  border-color: rgb(4, 90, 101);
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn-primario:hover {
+  background-color: rgb(25.4560669456, 96.1673640167, 143.5439330544);
+}
+
+.btn-rojo {
+  background-color: #db3434;
+  color: rgb(196, 181, 181);
+  padding: 0.75rem;
+  border: none;
+  border-color: rgb(196, 181, 181);
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn-rojo:hover {
+  background-color: rgb(143.5439330544, 25.4560669456, 25.4560669456);
+}
+
+.btn-verde {
+  background-color: #1d9712;
+  color: rgb(15, 197, 36);
+  padding: 0.75rem;
+  border: none;
+  border-color: rgb(15, 197, 36);
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn-verde:hover {
+  background-color: rgb(11.4970414201, 59.8639053254, 7.1360946746);
+}
+
+.texto {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.col-1 {
+  width: 8.3333333333%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-2 {
+  width: 16.6666666667%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-3 {
+  width: 25%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-4 {
+  width: 33.3333333333%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-5 {
+  width: 41.6666666667%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-6 {
+  width: 50%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-7 {
+  width: 58.3333333333%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-8 {
+  width: 66.6666666667%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-9 {
+  width: 75%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-10 {
+  width: 83.3333333333%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-11 {
+  width: 91.6666666667%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.col-12 {
+  width: 100%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.texto-primary {
+  color: #3498db;
+}
+
+.texto-success {
+  color: #2ecc71;
+}
+
+.texto-danger {
+  color: #e74c3c;
+}
+
+.texto-chanchito {
+  color: pink;
+}
+
+.mb-xs {
+  margin-bottom: 4px;
+}
+
+.mb-sm {
+  margin-bottom: 8px;
+}
+
+.mb-md {
+  margin-bottom: 16px;
+}
+
+.mb-lg {
+  margin-bottom: 32px;
+}
+
+body {
+  background-color: aliceblue;
+  color: #111;
+}
+
+/*# sourceMappingURL=main.css.map */

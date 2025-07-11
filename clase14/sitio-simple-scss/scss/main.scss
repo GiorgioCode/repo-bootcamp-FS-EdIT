@@ -1,0 +1,6 @@
+// main.scss
+// Archivo principal que importa el SCSS modularizado usando @use y @forward
+
+@use 'index'; // Importa todo lo definido en _index.scss
+
+// Puedes agregar aquí reglas globales adicionales si lo deseas

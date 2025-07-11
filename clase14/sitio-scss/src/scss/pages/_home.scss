@@ -1,0 +1,77 @@
+// ===============================
+// Estilos específicos de la página de inicio (home)
+// ===============================
+
+@use '../utils' as *; // Importa utilidades globales
+
+// Sección principal tipo hero
+.hero {
+    padding: 8rem 0 4rem; // Padding superior e inferior amplio
+    text-align: center;   // Centra el texto
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); // Fondo con degradado
+    
+    @include respond-to('md') {
+        padding: 10rem 0 6rem; // Más padding en pantallas medianas o mayores
+    }
+    
+    &__title {
+        font-size: 2.5rem; // Tamaño grande para el título principal
+        margin-bottom: var(--spacing-sm);
+        color: var(--color-dark);
+        
+        @include respond-to('md') {
+            font-size: 3.5rem; // Más grande en pantallas medianas+
+        }
+    }
+    
+    &__text {
+        font-size: 1.25rem; // Texto descriptivo más grande
+        margin-bottom: var(--spacing-md);
+        color: #555; // Gris suave
+        max-width: 700px; // Limita el ancho del texto
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+// Sección de features/destacados
+.features {
+    padding: var(--spacing-lg) 0; // Espaciado vertical amplio
+    
+    .grid {
+        @include respond-to('md') {
+            grid-template-columns: repeat(3, 1fr); // Tres columnas en desktop
+        }
+    }
+}
+
+// Tarjeta individual de feature
+.feature {
+    text-align: center;
+    padding: var(--spacing-md); // Padding interno
+    background: white;         // Fondo blanco
+    border-radius: 8px;        // Bordes redondeados
+    @include box-shadow(1);    // Sombra sutil
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px); // Efecto de elevación
+        @include box-shadow(2);     // Sombra más fuerte al pasar el mouse
+    }
+    
+    &__title {
+        color: var(--color-primary);           // Color destacado
+        margin-bottom: var(--spacing-xs);      // Espaciado inferior
+    }
+    
+    &__text {
+        color: #666;                          // Texto gris
+        margin-bottom: 0;
+    }
+    
+    &__icon {
+        font-size: 2.5rem;                    // Icono grande
+        color: var(--color-primary);          // Color destacado
+        margin-bottom: var(--spacing-sm);
+    }
+}

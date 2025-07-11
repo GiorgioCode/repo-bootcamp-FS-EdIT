@@ -1,0 +1,7 @@
+// ===============================
+// Índice de componentes
+// Este archivo re-exporta los componentes para importación centralizada
+// ===============================
+
+@forward 'button'; // Botones reutilizables
+@forward 'card';   // Tarjetas de contenido

@@ -1,0 +1,8 @@
+// ===============================
+// Índice de layout
+// Este archivo re-exporta todos los módulos de layout para importación centralizada
+// ===============================
+
+@forward 'header'; // Encabezado fijo y navegación
+@forward 'footer'; // Pie de página
+@forward 'grid';   // Sistema de grillas y utilidades flex

@@ -1,0 +1,52 @@
+// ===============================
+// Reset de estilos base para normalizar el CSS entre navegadores
+// ===============================
+
+// Elimina márgenes y paddings por defecto y aplica box-sizing universal
+*,
+*::before,
+*::after {
+    margin: 0;              // Quita el margen por defecto
+    padding: 0;             // Quita el padding por defecto
+    box-sizing: border-box; // Incluye padding y borde en el ancho/alto total
+}
+
+// Define la configuración base del documento HTML
+html {
+    font-size: var(--font-size-base);      // Tamaño base de fuente (16px)
+    line-height: var(--line-height-base);  // Altura de línea base
+    scroll-behavior: smooth;               // Desplazamiento suave al navegar
+}
+
+// Estilos base del body
+body {
+    font-family: var(--font-primary);      // Fuente principal
+    color: var(--color-text);              // Color de texto principal
+    background-color: white;               // Fondo blanco por defecto
+}
+
+// Imágenes responsivas
+img {
+    max-width: 100%;   // Limita el ancho al contenedor
+    height: auto;      // Mantiene la proporción
+    display: block;    // Elimina espacio extra debajo de la imagen
+}
+
+// Enlaces sin subrayado por defecto y heredan color
+ a {
+    text-decoration: none; // Sin subrayado
+    color: inherit;        // Hereda el color del texto
+}
+
+// Listas sin viñetas ni numeración
+ul, ol {
+    list-style: none;
+}
+
+// Botones básicos sin estilos nativos
+button {
+    border: none;           // Sin borde
+    background: none;       // Sin fondo
+    cursor: pointer;        // Cursor de mano
+    font-family: inherit;   // Hereda la fuente
+}

@@ -1,0 +1,18 @@
+{
+  "name": "sitio-scss",
+  "version": "1.0.0",
+  "description": "Un sitio web moderno con SCSS",
+  "main": "index.js",
+  "scripts": {
+    "sass:watch": "sass --watch src/scss/main.scss:dist/css/main.css --style compressed",
+    "sass:build": "sass src/scss/main.scss:dist/css/main.css --style compressed",
+    "dev": "npm run sass:watch",
+    "build": "npm run sass:build"
+  },
+  "keywords": ["scss", "sass", "css", "frontend"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.62.1"
+  }
+}

@@ -1,0 +1,57 @@
+@use '../utils' as *; // Importa utilidades globales
+
+// ===============================
+// Estilos para el encabezado (header) y navegación principal
+// ===============================
+
+.header {
+    background-color: var(--color-dark); // Fondo oscuro para el header
+    color: white;                       // Texto blanco
+    padding: var(--spacing-sm) 0;       // Espaciado vertical
+    position: fixed;                    // Fijo en la parte superior
+    width: 100%;                        // Ocupa todo el ancho
+    top: 0;                             // Arriba de la página
+    z-index: 1000;                      // Por encima de otros elementos
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Sombra sutil
+    
+    &__title {
+        margin: 0;                      // Sin margen
+        font-size: 1.5rem;              // Tamaño grande para el logo/título
+        color: white;                   // Color blanco
+    }
+    
+    .container {
+        display: flex;                  // Layout flex
+        justify-content: space-between; // Espaciado entre logo y nav
+        align-items: center;            // Centrado vertical
+    }
+}
+
+// Navegación principal
+.nav {
+    &__list {
+        display: flex;                  // Elementos en línea
+        gap: var(--spacing-md);         // Espaciado entre links
+    }
+    
+    &__link {
+        color: white;                   // Color blanco
+        padding: var(--spacing-xs) 0;   // Espaciado vertical
+        position: relative;             // Para el subrayado animado
+        
+        &::after {
+            content: '';                    // Línea decorativa
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;                       // Oculto por defecto
+            height: 2px;
+            background-color: var(--color-primary); // Color primario
+            transition: width 0.3s ease;    // Animación de ancho
+        }
+        
+        &:hover::after {
+            width: 100%;                    // Subrayado animado al hover
+        }
+    }
+}

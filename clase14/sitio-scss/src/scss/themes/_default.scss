@@ -1,0 +1,122 @@
+// ==========================================================
+// Archivo: _default.scss
+//
+// Este archivo define las variables y reglas para el tema por defecto (claro)
+// y los overrides para el modo oscuro, permitiendo cambiar el aspecto global
+// del sitio dinámicamente usando el atributo data-theme="dark" en <html>.
+//
+// Incluye variables CSS custom properties para colores principales, secundarios,
+// fondos y texto, así como reglas específicas para header, hero, footer, cards,
+// y otros componentes para asegurar contraste y accesibilidad en ambos temas.
+// ==========================================================
+
+:root {
+    // =====================================================
+    // VARIABLES DE TEMA CLARO (por defecto)
+    // Estas variables definen la paleta base del sitio en modo claro.
+    // Se pueden reutilizar en todo el proyecto mediante var(--nombre).
+    // =====================================================
+    --color-primary: #3498db;      // Azul principal para botones, links y acentos
+    --color-secondary: #2ecc71;    // Verde secundario para variantes y énfasis
+    --color-text: #333;            // Color principal del texto en fondos claros
+    --color-light: #f8f9fa;        // Fondo principal claro (body, secciones)
+    --color-dark: #343a40;         // Fondo oscuro para header, footer, etc.
+    // Puedes agregar más variables específicas del tema aquí
+}
+
+// =====================================================
+// OVERRIDES PARA MODO OSCURO
+// Estas reglas se activan cuando el atributo data-theme="dark"
+// está presente en el elemento <html>. Sobrescriben variables y
+// estilos para adaptar el diseño a un fondo oscuro, asegurando
+// contraste y accesibilidad en todos los componentes principales.
+// =====================================================
+[data-theme="dark"] {
+    --color-text: #f8f9fa;         // Texto claro
+    --color-light: #23272f;        // Fondo general oscuro
+    --color-dark: #f8f9fa;         // Fondo claro alternativo
+    
+    body {
+        background-color: #121212; // Fondo principal oscuro
+        color: var(--color-text); // Texto claro
+    }
+    // =====================================================
+    // HEADER Y NAVEGACIÓN PRINCIPAL
+    // Sobrescribe el fondo y el color del header para modo oscuro.
+    // Se usa un fondo más oscuro y texto claro para garantizar contraste
+    // y accesibilidad en la navegación superior. Los enlaces también
+    // cambian a color claro y el subrayado animado mantiene el color primario.
+    // Esto asegura que el header sea legible tanto en desktop como mobile.
+    // =====================================================
+    .header {
+        background-color: #181c22 !important; // Fondo oscuro profundo para header
+        color: var(--color-text) !important;  // Texto claro
+        box-shadow: 0 2px 8px rgba(0,0,0,0.45); // Sombra más notoria en dark
+        
+        &__title {
+            color: var(--color-text) !important; // Título siempre visible
+        }
+        .nav__link {
+            color: var(--color-text) !important; // Links visibles en dark
+            &::after {
+                background-color: var(--color-primary); // Subrayado mantiene acento
+            }
+        }
+    }
+
+    // =====================================================
+    // HERO SECTION
+    // El fondo del hero usa un degradado oscuro para diferenciarse visualmente
+    // del header y el resto del contenido. El texto y los botones cambian a
+    // colores claros para asegurar contraste. El box-shadow se intensifica para
+    // que los botones resalten sobre el fondo oscuro. Esto mejora la jerarquía
+    // visual y la experiencia de usuario en modo oscuro.
+    // =====================================================
+    .hero {
+        background: linear-gradient(120deg, #23272f 60%, #181c22 100%); // Degradado oscuro
+        color: var(--color-text); // Texto claro
+        
+        .hero__title,
+        .hero__text {
+            color: var(--color-text); // Asegura contraste en títulos y descripciones
+        }
+        .button {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.6); // Sombra más marcada en dark
+        }
+    }
+
+    // =====================================================
+    // FOOTER
+    // El footer hereda el fondo oscuro del header para mantener coherencia visual.
+    // El texto se mantiene claro y se aumenta la opacidad para mejor legibilidad.
+    // Se agrega una sombra superior para separar el footer del contenido principal.
+    // Esto asegura que el footer sea visible y accesible en cualquier fondo.
+    // =====================================================
+    .footer {
+        background-color: #181c22 !important; // Fondo oscuro igual que header
+        color: var(--color-text) !important;  // Texto claro
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.45); // Sombra superior
+        
+        &__text {
+            color: var(--color-text) !important; // Texto claro
+            opacity: 0.85; // Ligera transparencia para suavizar
+        }
+    }
+
+    // =====================================================
+    // CARDS Y FEATURES
+    // Las tarjetas y bloques de "features" usan un fondo gris oscuro y texto claro
+    // para mantener contraste y jerarquía visual en modo oscuro. Se sobrescriben
+    // los colores de título y texto para asegurar accesibilidad. Esto es útil para
+    // cualquier componente que reutilice .card o .feature, facilitando la extensión.
+    // =====================================================
+    .card, .feature {
+        background-color: #1e1e1e; // Fondo de tarjetas en dark mode
+        color: var(--color-text);  // Texto claro
+        
+        &__title, &__text {
+            color: var(--color-text); // Contraste en títulos y textos
+        }
+    }
+}
+

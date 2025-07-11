@@ -1,0 +1,38 @@
+// ===============================
+// Estilos base para contenedores y secciones generales
+// ===============================
+
+@use '../utils' as *; // Importa utilidades globales (mixins, variables, funciones)
+
+// Contenedor principal para centrar y limitar el ancho del contenido
+.container {
+    width: 100%;                    // Ocupa todo el ancho disponible
+    max-width: 1200px;              // Limita el ancho máximo
+    margin: 0 auto;                 // Centra horizontalmente
+    padding: 0 var(--spacing-sm);   // Padding lateral pequeño por defecto
+    
+    @include respond-to('md') {
+        padding: 0 var(--spacing-md); // Más padding en pantallas medianas o mayores
+    }
+}
+
+// Sección genérica para separar bloques de contenido
+.section {
+    padding: var(--spacing-lg) 0;    // Padding vertical grande
+    
+    // Título de sección con decoración
+    &__title {
+        text-align: center;                  // Centrado
+        margin-bottom: var(--spacing-lg);    // Espaciado inferior
+        position: relative;                  // Para el pseudo-elemento decorativo
+        
+        &::after {
+            content: '';                         // Elemento decorativo
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-primary); // Línea color primario
+            margin: var(--spacing-sm) auto 0;      // Centrado bajo el título
+        }
+    }
+}

@@ -1,0 +1,52 @@
+@use '../utils' as *; // Importa utilidades globales
+
+// ===============================
+// Estilos para el componente tarjeta (card)
+// ===============================
+
+.card {
+    background: white;                          // Fondo blanco
+    border-radius: 8px;                         // Bordes redondeados
+    overflow: hidden;                           // Oculta desbordes
+    @include box-shadow(1);                     // Sombra ligera por defecto
+    transition: transform 0.3s ease, box-shadow 0.3s ease; // Transiciones suaves
+    height: 100%;                               // Ocupa todo el alto disponible
+    
+    &:hover {
+        transform: translateY(-5px);            // Efecto de elevación
+        @include box-shadow(3);                 // Sombra más fuerte al hacer hover
+    }
+    
+    // Imagen de cabecera de la tarjeta
+    &__image {
+        width: 100%;           // Ocupa el ancho completo
+        height: 200px;         // Alto fijo
+        object-fit: cover;     // Recorta la imagen para cubrir el área
+    }
+    
+    // Contenido principal de la tarjeta
+    &__content {
+        padding: var(--spacing-md); // Espaciado interno
+    }
+    
+    // Título de la tarjeta
+    &__title {
+        margin-top: 0;               // Sin margen superior
+        color: var(--color-dark);    // Color oscuro
+    }
+    
+    // Texto de la tarjeta
+    &__text {
+        color: #666;                               // Texto gris
+        margin-bottom: var(--spacing-sm);          // Espaciado inferior
+    }
+    
+    // Pie de la tarjeta (footer)
+    &__footer {
+        padding: var(--spacing-sm) var(--spacing-md); // Espaciado interno
+        border-top: 1px solid #eee;                  // Línea superior sutil
+        display: flex;                               // Layout flex
+        justify-content: space-between;              // Separación de elementos
+        align-items: center;                         // Centrado vertical
+    }
+}

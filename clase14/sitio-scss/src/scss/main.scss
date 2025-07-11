@@ -1,0 +1,22 @@
+// ===============================
+// Archivo principal SCSS
+// Importa todos los módulos y utilidades del proyecto de forma modular
+// ===============================
+
+// 1. Utilidades globales (variables, mixins, funciones)
+@use 'utils' as *;
+
+// 2. Estilos base (reset, tipografía, contenedores)
+@use 'base';
+
+// 3. Estructura de la página (header, footer, grid)
+@use 'layout';
+
+// 4. Componentes reutilizables (botones, tarjetas, etc.)
+@use 'components';
+
+// 5. Estilos específicos de páginas
+@use 'pages';
+
+// 6. Temas y variantes (tema claro/oscuro)
+@use 'themes';

@@ -1,0 +1,54 @@
+// ===============================
+// Sistema de grillas y utilidades flex
+// ===============================
+
+@use '../utils' as *; // Importa utilidades globales
+
+// Sistema de grilla responsivo
+.grid {
+    display: grid;                             // Usa CSS Grid
+    grid-template-columns: repeat(1, 1fr);     // Una columna por defecto
+    gap: var(--spacing-md);                    // Espaciado entre columnas/filas
+    
+    @include respond-to('sm') {
+        grid-template-columns: repeat(2, 1fr); // Dos columnas en pantallas pequeñas+
+    }
+    
+    @include respond-to('lg') {
+        grid-template-columns: repeat(3, 1fr); // Tres columnas en pantallas grandes
+    }
+    
+    // Variante: grilla de dos columnas en md+
+    &--2 {
+        @include respond-to('md') {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    // Variante: grilla de cuatro columnas en lg+
+    &--4 {
+        @include respond-to('lg') {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+
+// Utilidades de flexbox
+.flex {
+    display: flex; // Activa modelo flex
+    
+    &--center {
+        @include flex-center; // Centra elementos (mixin reutilizable)
+    }
+    
+    &--between {
+        justify-content: space-between; // Espaciado máximo entre hijos
+    }
+    
+    &--around {
+        justify-content: space-around; // Espaciado igual alrededor de hijos
+    }
+    
+    &--column {
+        flex-direction: column; // Dirección vertical
+    }
+}

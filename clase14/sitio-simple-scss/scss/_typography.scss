@@ -1,0 +1,22 @@
+// _typography.scss
+// Ejemplo de uso de variables y mixins para tipografía
+
+@use 'variables' as v; // Importa variables SCSS con el prefijo v.
+@use 'mixins' as m;    // Importa mixins SCSS con el prefijo m.
+
+body {
+  font-family: v.$font-stack;      // Fuente principal definida en variables
+  font-size: v.$font-size-base;    // Tamaño base de fuente
+  background: v.$gray-light;       // Fondo gris claro
+  margin: 0;                       // Sin margen por defecto
+}
+
+.lead {
+  @include m.lead-text;            // Aplica mixin de texto destacado
+  margin-bottom: v.$spacer;        // Espacio inferior
+}
+
+.small {
+  font-size: v.$font-size-sm;      // Fuente pequeña
+  color: v.$secondary;             // Color de texto secundario
+}

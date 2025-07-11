@@ -1,0 +1,8 @@
+// ===============================
+// Índice de estilos base
+// Este archivo re-exporta todos los módulos base para que puedan ser importados juntos
+// ===============================
+
+@forward 'reset';      // Normaliza estilos y elimina inconsistencias entre navegadores
+@forward 'typography'; // Define la tipografía global del sitio
+@forward 'base';       // Contiene estilos base de contenedores y secciones

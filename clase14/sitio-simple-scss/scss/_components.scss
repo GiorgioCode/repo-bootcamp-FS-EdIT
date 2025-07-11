@@ -1,0 +1,46 @@
+// _components.scss
+// Ejemplo de uso de mixins, bucles for y variables
+
+@use 'variables' as v; // Importa variables SCSS con el prefijo v.
+@use 'mixins' as m;    // Importa los mixins SCSS con el prefijo m.
+@use 'sass:color';     // Importa el módulo nativo de color de Sass
+
+// Header principal del sitio
+.main-header {
+  background: v.$primary;                        // Fondo azul principal
+  color: v.$white;                              // Texto blanco
+  padding: v.$spacer * 2 v.$spacer;             // Espaciado vertical y horizontal
+  @include m.rounded(1rem);                     // Borde redondeado grande
+  @include m.shadow(v.$primary, 0.2, 8px, 24px);// Sombra azul
+  text-align: center;                           // Centra el texto
+  margin-bottom: v.$spacer * 2;                 // Espacio inferior
+}
+
+// Contenedor de tarjetas
+.card-list {
+  display: flex;                 // Layout flexible horizontal
+  gap: v.$spacer;                // Espaciado entre tarjetas
+  margin-bottom: v.$spacer * 2;  // Espacio inferior
+}
+
+// Genera 4 tarjetas con diferentes tonos usando @for
+@for $i from 1 through 4 {
+  .card-#{$i} {                                         // Crea .card-1, .card-2, etc.
+    background: color.adjust(v.$primary, $lightness: $i * 7%); // Fondo azul más claro según el índice
+    color: v.$white;                                    // Texto blanco
+    padding: v.$card-padding;                           // Espaciado interno
+    flex: 1;                                            // Todas las tarjetas ocupan el mismo espacio
+    @include m.rounded(0.75rem);                        // Borde redondeado
+    @include m.shadow(v.$primary, 0.12, 4px, 12px);     // Sombra suave
+    text-align: center;                                 // Centra el texto
+    font-size: v.$font-size-base;                       // Tamaño de fuente base
+  }
+}
+
+// Contenido general del sitio
+.content {
+  margin: 0 auto;                 // Centra horizontalmente
+  max-width: 800px;               // Limita el ancho máximo
+  font-family: v.$font-stack;     // Fuente definida en variables
+  color: v.$secondary;            // Color de texto secundario
+}

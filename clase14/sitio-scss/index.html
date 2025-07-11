@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Sitio con SCSS</title>
+    <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">Bienvenido a mi Sitio</h1>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#" class="nav__link">Inicio</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Acerca de</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="button button--primary" id="theme-toggle">Cambiar tema</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero__title">Explora nuestro contenido</h2>
+                <p class="hero__text">Un sitio web moderno creado con SCSS</p>
+                <button class="button button--primary">Saber más</button>
+                <button class="button button--secondary">Saber menos</button>
+                <button class="button button--outline">Saber más (outline)</button>
+            </div>
+        </section>
+
+        <section class="features section">
+            <div class="container">
+                <h2 class="section__title">Nuestras Características</h2>
+                <div class="grid">
+                    <article class="feature card">
+                        <div class="feature__icon">📱</div>
+                        <h3 class="feature__title">Diseño Responsivo</h3>
+                        <p class="feature__text">Se adapta a cualquier dispositivo</p>
+                    </article>
+                    <article class="feature card">
+                        <div class="feature__icon">⚡</div>
+                        <h3 class="feature__title">Rápido</h3>
+                        <p class="feature__text">Carga en segundos</p>
+                    </article>
+                    <article class="feature card">
+                        <div class="feature__icon">🎨</div>
+                        <h3 class="feature__title">Moderno</h3>
+                        <p class="feature__text">Diseño actual</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="utilities section">
+            <div class="container">
+                <h2 class="section__title">Utilidades</h2>
+                <div class="flex">
+                    <div class="flex-1">
+                        <h3 class="text-lg">Texto grande</h3>
+                        <p class="text-md">Texto mediano</p>
+                        <p class="text-sm">Texto pequeño</p>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-uppercase">Texto en mayúsculas</h3>
+                        <p class="text-lowercase">texto en minúsculas</p>
+                        <p class="text-capitalize">Texto con mayúsculas iniciales</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">&copy; 2025 Mi Sitio con SCSS</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'light') {
+                html.setAttribute('data-theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>

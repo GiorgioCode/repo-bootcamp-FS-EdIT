@@ -1,0 +1,38 @@
+// ===============================
+// Variables globales CSS para el proyecto
+// ===============================
+
+:root {
+    // ===========================
+    // Colores principales del sitio
+    // ===========================
+    --color-primary: #3498db;      // Azul principal: botones, enlaces, acentos
+    --color-secondary: #2ecc71;    // Verde secundario: botones secundarios, acentos
+    --color-text: #333;            // Color de texto principal
+    --color-light: #f8f9fa;        // Fondo claro, tarjetas, etc.
+    --color-dark: #343a40;         // Fondo oscuro, encabezados, footer
+    
+    // ===========================
+    // Espaciados (basados en 1rem = 16px)
+    // ===========================
+    --spacing-unit: 1rem;                          // Unidad base de espaciado
+    --spacing-xs: calc(var(--spacing-unit) * 0.5); // Extra pequeño: 8px
+    --spacing-sm: var(--spacing-unit);             // Pequeño: 16px
+    --spacing-md: calc(var(--spacing-unit) * 2);   // Mediano: 32px
+    --spacing-lg: calc(var(--spacing-unit) * 4);   // Grande: 64px
+    
+    // ===========================
+    // Tipografía
+    // ===========================
+    --font-primary: 'Arial', sans-serif; // Fuente principal para todo el sitio
+    --font-size-base: 16px;              // Tamaño base de fuente
+    --line-height-base: 1.5;             // Altura de línea base
+    
+    // ===========================
+    // Breakpoints para diseño responsivo
+    // ===========================
+    --breakpoint-sm: 576px;   // Teléfonos
+    --breakpoint-md: 768px;   // Tablets
+    --breakpoint-lg: 992px;   // Laptops
+    --breakpoint-xl: 1200px;  // Pantallas grandes
+}

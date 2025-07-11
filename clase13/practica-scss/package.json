@@ -1,0 +1,16 @@
+{
+    "name": "practica-scss",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "procesar": "sass --watch src/scss:dist/css",
+        "compilar-minificado": "sass src/scss:dist/css --style compressed"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "sass": "^1.89.2"
+    }
+}

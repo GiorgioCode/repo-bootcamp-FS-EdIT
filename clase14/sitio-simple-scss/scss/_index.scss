@@ -1,0 +1,8 @@
+// _index.scss
+// Archivo para hacer forward de los parciales SCSS
+
+@forward 'variables';
+@forward 'mixins';
+@forward 'components';
+@forward 'buttons';
+@forward 'typography';

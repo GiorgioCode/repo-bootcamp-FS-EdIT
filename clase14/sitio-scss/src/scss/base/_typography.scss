@@ -1,0 +1,33 @@
+// ===============================
+// Tipografía: estilos para títulos, párrafos y enlaces
+// ===============================
+
+// Estilos base para todos los encabezados
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-sm); // Espaciado inferior entre encabezados
+    line-height: 1.2;                // Altura de línea ajustada para títulos
+    font-weight: 700;                // Grosor de fuente en negrita
+}
+
+// Tamaños específicos para cada nivel de encabezado
+h1 { font-size: 2.5rem; } // Título principal
+h2 { font-size: 2rem; }   // Subtítulo
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+// Estilo base para párrafos
+p {
+    margin-bottom: var(--spacing-sm); // Espaciado inferior entre párrafos
+}
+
+// Estilos para enlaces
+ a {
+    color: var(--color-primary);           // Color principal para enlaces
+    transition: color 0.3s ease;           // Transición suave de color
+    
+    &:hover {
+        color: color-shade(var(--color-primary), 15%); // Oscurece el color al pasar el mouse
+    }
+}

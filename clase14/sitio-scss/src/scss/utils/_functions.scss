@@ -1,0 +1,24 @@
+// ===============================
+// Funciones de utilidad SCSS
+// ===============================
+
+// Convierte un valor en píxeles a rem, útil para mantener la escalabilidad y accesibilidad.
+// $pixels: cantidad de píxeles a convertir
+// $context: base para el cálculo (por defecto 16)
+@function rem($pixels, $context: 16) {
+    @return #{$pixels / $context}rem; // Devuelve el valor en rem
+}
+
+// Convierte un valor en píxeles a em, relativo al contexto de fuente del elemento padre.
+// $pixels: cantidad de píxeles a convertir
+// $context: base para el cálculo (por defecto 16)
+@function em($pixels, $context: 16) {
+    @return #{$pixels / $context}em; // Devuelve el valor en em
+}
+
+// Genera una versión más oscura de un color usando la función darken de Sass.
+// $color: color base a oscurecer
+// $percentage: porcentaje de oscurecimiento (ej: 10%)
+@function color-shade($color, $percentage) {
+    @return darken($color, $percentage); // Devuelve el color oscurecido
+}

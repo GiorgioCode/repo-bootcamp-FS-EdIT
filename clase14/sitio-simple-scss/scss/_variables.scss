@@ -1,0 +1,20 @@
+// _variables.scss
+// Aquí se definen variables globales para colores, fuentes y tamaños
+
+// Colores principales
+$primary: #007bff;     // Azul principal, usado para botones y cabecera
+$secondary: #6c757d;   // Gris secundario, usado para texto y detalles
+$success: #28a745;     // Verde éxito, usado para botones de éxito
+$danger: #dc3545;      // Rojo peligro, usado para botones de peligro
+$white: #fff;          // Blanco puro, usado para texto y fondos
+$gray-light: #f8f9fa;  // Gris claro, usado como fondo de página
+
+// Tipografía
+$font-stack: 'Segoe UI', Arial, sans-serif; // Familia de fuentes principal
+$font-size-base: 16px;    // Tamaño base para texto
+$font-size-lg: 1.25rem;   // Tamaño para textos destacados
+$font-size-sm: 0.875rem;  // Tamaño para textos pequeños
+
+// Espaciados
+$spacer: 1rem;         // Espaciado base para márgenes y paddings
+$card-padding: 1.5rem; // Espaciado interno de las tarjetas

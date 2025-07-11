@@ -1,0 +1,17 @@
+// ===============================
+// Estilos para el pie de página (footer)
+// ===============================
+
+.footer {
+    background-color: var(--color-dark); // Fondo oscuro
+    color: white;                       // Texto blanco
+    padding: var(--spacing-md) 0;       // Espaciado vertical
+    text-align: center;                 // Centra el texto
+    margin-top: auto;                   // Empuja el footer al fondo con flexbox
+    
+    &__text {
+        margin: 0;                      // Sin margen
+        font-size: 0.9rem;              // Tamaño de fuente pequeño
+        opacity: 0.8;                   // Texto semitransparente
+    }
+}

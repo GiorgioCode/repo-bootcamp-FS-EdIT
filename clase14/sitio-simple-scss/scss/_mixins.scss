@@ -1,0 +1,33 @@
+// _mixins.scss
+// Ejemplos de mixins y funciones útiles en SCSS
+
+@use 'variables' as v; // Importa variables SCSS con el prefijo v.
+@use 'sass:color';    // Importa módulo de color de Sass
+
+// Mixin para aplicar un borde redondeado configurable
+@mixin rounded($radius: 0.5rem) {         // $radius es el radio del borde
+  border-radius: $radius;                 // Aplica el radio recibido
+}
+
+// Mixin para crear un sombreado configurable
+@mixin shadow($color: #000, $opacity: 0.15, $y: 4px, $blur: 16px) { // Parámetros personalizables
+  box-shadow: 0 $y $blur rgba($color, $opacity); // Sombra con color y opacidad
+}
+
+// Mixin para centrar elementos con flexbox
+@mixin flex-center {
+  display: flex;             // Activa flexbox
+  justify-content: center;   // Centra horizontalmente
+  align-items: center;       // Centra verticalmente
+}
+
+// Mixin para texto destacado
+@mixin lead-text {
+  font-size: v.$font-size-lg; // Usa tamaño grande definido en variables
+  font-weight: bold;         // Texto en negrita
+}
+
+// Función para oscurecer un color usando color.adjust
+@function darken-color($color, $amount: 10%) { // $amount es el porcentaje a oscurecer
+  @return color.adjust($color, $lightness: -$amount); // Devuelve el color ajustado
+}

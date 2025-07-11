@@ -1,0 +1,53 @@
+@use 'sass:color'; // Importa utilidades de color de Sass
+@use '../utils' as *; // Importa utilidades globales
+
+// ===============================
+// Estilos para el componente botón
+// ===============================
+
+.button {
+    display: inline-block;                       // Botón en línea
+    padding: var(--spacing-xs) var(--spacing-md); // Espaciado interno (vertical/horizontal)
+    border-radius: 4px;                          // Bordes redondeados
+    font-weight: 600;                            // Texto semi-negrita
+    text-align: center;                          // Centra el texto
+    transition: all 0.3s ease;                   // Transiciones suaves
+    border: 2px solid transparent;               // Borde transparente por defecto
+    
+    &:hover {
+        transform: translateY(-2px);             // Efecto de elevación
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Sombra al hacer hover
+    }
+    
+    // Variante primaria (botón principal)
+    &--primary {
+        background-color: var(--color-primary); // Fondo azul
+        color: white;                          // Texto blanco
+        
+        &:hover {
+            background-color: color.adjust(#3498db, $lightness: -10%); // Azul más oscuro al hacer hover
+        }
+    }
+    
+    // Variante secundaria (botón alternativo)
+    &--secondary {
+        background-color: var(--color-secondary); // Fondo verde
+        color: white;                            // Texto blanco
+        
+        &:hover {
+            background-color: color.adjust(#2ecc71, $lightness: -10%); // Verde más oscuro al hacer hover
+        }
+    }
+    
+    // Variante outline (borde azul, fondo transparente)
+    &--outline {
+        background-color: transparent;           // Fondo transparente
+        border-color: var(--color-primary);      // Borde azul
+        color: var(--color-primary);             // Texto azul
+        
+        &:hover {
+            background-color: var(--color-primary); // Fondo azul al hacer hover
+            color: white;                          // Texto blanco
+        }
+    }
+}

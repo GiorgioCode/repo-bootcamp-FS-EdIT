@@ -1,0 +1,115 @@
+// mixin
+// un mixing te permite escribir un conjunto de reglas
+//css que se pueden reutilizar en diferentes
+//selectores. ademas pueden recibir parametros dinamicos
+// lo que evita escribir codigo repetido
+// DRY - DONT REPEAT YOURSELVES
+
+@mixin boton-estilo($bg-color, $text-color, $padding: 0.75rem) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: $padding;
+    border: none;
+    //border-radius: 15px;
+    border-color: $text-color;
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($bg-color, 20%);
+    }
+}
+
+.btn-primario {
+    @include boton-estilo(#3498db, rgb(4, 90, 101));
+}
+.btn-rojo {
+    @include boton-estilo(#db3434, rgb(196, 181, 181));
+}
+.btn-verde {
+    @include boton-estilo(#1d9712, rgb(15, 197, 36));
+}
+
+//funciones
+//una funcion en SCSS te permite calcular y retornar un valor
+//por ejemplo una unidad, color modificado,etc.
+//NO GENERA CSS DIRECTAMENTE SINO QUE GENERA VALORES PARA
+//APLICAR A PROPIEDADES
+
+//Ejemplo: funcion para convertir medidas de pixeles a rem, con base opcional
+//16px por defecto
+
+@function px-a-rem($px, $base: 16) {
+    @return ($px/$base) * 1rem;
+}
+
+.texto {
+    font-size: px-a-rem(20);
+    line-height: px-a-rem(32);
+    margin-bottom: px-a-rem(16);
+}
+
+//BUCLE @FOR
+// CON ESTE BUCLE PUEDES EJECUTAR REGLAS MULTIPLES VECES
+// USANDO UN INDICE Y CREAR VARIACIONES DE CLASES PROGRESIVAS
+
+//EJEMPLO: GENERAR CLASES DE COLUMNAS ESTILO BOOTSTRAP
+
+//GENERAMOS 12 CLASES PARA GRID, COMO UN SISTEMA DE COLUMNAS
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        width: (100%/12) * $i; //CALCULAR EL ANCHO PROPORCIONAL
+        float: left;
+        padding: 0.5rem;
+    }
+}
+
+// @each
+//PERMITE RECORRER LISTAS O MAPAS DE DATO.
+//ESTO ES UTIL PARA CREAR CLASES DINAMICAS
+//A PARTIR DE VALORES REPETITIVOS COMO COLORES, TAMAÑOS O VARIANTES.
+
+//LISTA DE COLORES: NOMBRE Y VALOR
+
+$colores: (primary #3498db, success #2ecc71, danger #e74c3c, chanchito pink);
+
+@each $nombre, $color in $colores {
+    .texto-#{$nombre} {
+        color: $color;
+    }
+}
+
+//mapa de espaciados
+
+$espaciados: (
+    xs: 4px,
+    sm: 8px,
+    md: 16px,
+    lg: 32px,
+);
+
+@each $clave, $valor in $espaciados {
+    .mb-#{$clave} {
+        margin-bottom: $valor;
+    }
+}
+
+//IF-ELSE
+//SIRVE PARA APLICAR REGLAS CSS EN FUNCION DEL ESTADO DE
+//UNA VARIABLE
+
+$modo: dark;
+
+body {
+    @if modo == dark {
+        background-color: #111;
+        color: aliceblue;
+    } @else {
+        background-color: aliceblue;
+        color: #111;
+    }
+}
