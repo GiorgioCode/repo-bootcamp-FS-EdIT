@@ -3,6 +3,7 @@
 ![Educación IT](https://img.shields.io/badge/Educaci%C3%B3n%20IT-Bootcamp-blue)
 ![Full Stack](https://img.shields.io/badge/Full%20Stack-Engineer-orange)
 ![Fecha](https://img.shields.io/badge/Actualizado-Julio%202025-green)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/GiorgioCode/repo-bootcamp-FS-EdIT/main)
 
 ## 📚 Bienvenidos!!
 
