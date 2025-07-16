@@ -1,4 +1,3 @@
-
 # 📦 Uso de Archivos Parciales en SCSS (`_mixins.scss`, `_variables.scss`, etc.)
 
 En **SCSS**, los archivos que comienzan con guion bajo (`_`) se denominan **parciales** o **partials**. Estos archivos no se compilan directamente a CSS, sino que están diseñados para ser **importados o utilizados dentro de otros archivos SCSS**.
@@ -10,25 +9,26 @@ En **SCSS**, los archivos que comienzan con guion bajo (`_`) se denominan **parc
 Un **archivo parcial** es un fragmento de código SCSS que contiene piezas reutilizables, como mixins, funciones, variables o estilos base.
 
 Por convención:
-- Se nombra como `_archivo.scss` (por ejemplo, `_mixins.scss`).
-- No se compila por separado.
-- Se importa sin el guion bajo ni la extensión.
+
+-   Se nombra como `_archivo.scss` (por ejemplo, `_mixins.scss`).
+-   No se compila por separado.
+-   Se importa sin el guion bajo ni la extensión.
 
 ```scss
 // _mixins.scss
 @mixin centrar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 ```
 
 ```scss
 // styles.scss
-@import 'mixins';
+@import "mixins";
 
 .container {
-  @include centrar;
+    @include centrar;
 }
 ```
 
@@ -38,10 +38,10 @@ Por convención:
 
 ## ✅ Ventajas de los parciales
 
-- 📁 **Modularidad**: separás tu código por responsabilidades.
-- 🚫 **No genera CSS duplicado**: no se compilan si no se usan.
-- 🔄 **Reutilización**: fácil mantenimiento y escalabilidad.
-- 🧩 **Composición**: permite componer un sistema de diseño limpio.
+-   📁 **Modularidad**: separás tu código por responsabilidades.
+-   🚫 **No genera CSS duplicado**: no se compilan si no se usan.
+-   🔄 **Reutilización**: fácil mantenimiento y escalabilidad.
+-   🧩 **Composición**: permite componer un sistema de diseño limpio.
 
 ---
 
@@ -58,10 +58,10 @@ $primary-color: #3498db;
 
 ```scss
 // styles.scss
-@use 'variables';
+@use "variables";
 
 body {
-  background-color: variables.$primary-color;
+    background-color: variables.$primary-color;
 }
 ```
 
@@ -70,10 +70,10 @@ body {
 ### 🟢 Acceso sin prefijo (no recomendado)
 
 ```scss
-@use 'variables' as *;
+@use "variables" as *;
 
 body {
-  background-color: $primary-color;
+    background-color: $primary-color;
 }
 ```
 
@@ -85,17 +85,17 @@ body {
 
 ```scss
 // abstracts/_index.scss
-@forward 'variables';
-@forward 'mixins';
-@forward 'functions';
+@forward "variables";
+@forward "mixins";
+@forward "functions";
 ```
 
 ```scss
 // main.scss
-@use 'abstracts';
+@use "abstracts";
 
 .button {
-  @include abstracts.centrar;
+    @include abstracts.centrar;
 }
 ```
 
@@ -103,11 +103,11 @@ body {
 
 ## ⚠️ Diferencias clave
 
-| Comando     | ¿Está deprecado? | Aislamiento de nombres | Ideal para...                     |
-|-------------|------------------|-------------------------|------------------------------------|
-| `@import`   | ✅ Sí             | ❌ No                   | Proyectos antiguos o pequeños      |
-| `@use`      | ❌ No             | ✅ Sí                   | Importar variables y mixins        |
-| `@forward`  | ❌ No             | ✅ Sí                   | Crear archivos índice reutilizables |
+| Comando    | ¿Está deprecado? | Aislamiento de nombres | Ideal para...                       |
+| ---------- | ---------------- | ---------------------- | ----------------------------------- |
+| `@import`  | ✅ Sí            | ❌ No                  | Proyectos antiguos o pequeños       |
+| `@use`     | ❌ No            | ✅ Sí                  | Importar variables y mixins         |
+| `@forward` | ❌ No            | ✅ Sí                  | Crear archivos índice reutilizables |
 
 ---
 
@@ -123,11 +123,11 @@ $espaciado: 1rem;
 
 ```scss
 // styles.scss
-@use 'variables';
+@use "variables";
 
 .header {
-  background-color: variables.$color-principal;
-  padding: variables.$espaciado;
+    background-color: variables.$color-principal;
+    padding: variables.$espaciado;
 }
 ```
 
@@ -138,16 +138,16 @@ $espaciado: 1rem;
 ```scss
 // _mixins.scss
 @mixin cuadrado($tamanio) {
-  width: $tamanio;
-  height: $tamanio;
+    width: $tamanio;
+    height: $tamanio;
 }
 ```
 
 ```scss
-@use 'mixins';
+@use "mixins";
 
 .card {
-  @include mixins.cuadrado(150px);
+    @include mixins.cuadrado(150px);
 }
 ```
 
@@ -158,15 +158,15 @@ $espaciado: 1rem;
 ```scss
 // _functions.scss
 @function rem($px, $base: 16) {
-  @return ($px / $base) * 1rem;
+    @return ($px / $base) * 1rem;
 }
 ```
 
 ```scss
-@use 'functions';
+@use "functions";
 
 .text {
-  font-size: functions.rem(24);
+    font-size: functions.rem(24);
 }
 ```
 
@@ -202,21 +202,19 @@ scss/
 En `main.scss`, usarías algo como:
 
 ```scss
-@use 'abstracts' as *;
-@use 'base/reset';
-@use 'components/button';
-@use 'layout/header';
+@use "abstracts" as *;
+@use "base/reset";
+@use "components/button";
+@use "layout/header";
 ```
 
 ---
 
 ## 🧠 Resumen
 
-- Los guiones bajos (`_`) indican **archivos parciales** que **no se compilan directamente**.
-- Se usan con `@import` (antiguo) o `@use` (moderno).
-- La arquitectura modular mejora la escalabilidad y mantenimiento del código.
-- Preferí `@use` y `@forward` en proyectos nuevos.
+-   Los guiones bajos (`_`) indican **archivos parciales** que **no se compilan directamente**.
+-   Se usan con `@import` (antiguo) o `@use` (moderno).
+-   La arquitectura modular mejora la escalabilidad y mantenimiento del código.
+-   Preferí `@use` y `@forward` en proyectos nuevos.
 
 ---
-
-¿Preguntas o querés ver una demo integrada con HTML?
