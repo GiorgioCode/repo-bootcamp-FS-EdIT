@@ -1,0 +1,385 @@
+/* 
+ * FUNCIONES DE TEMPORIZACIÓN (TIMING FUNCTIONS) EN CSS
+ * Este archivo explora en detalle las diferentes opciones para controlar
+ * la velocidad de progresión de una animación
+ */
+
+/* Reset y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #3498db;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #2c3e50;
+    margin: 20px 0 10px;
+}
+
+.descripcion {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+code {
+    background-color: #f8f9fa;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #e74c3c;
+}
+
+ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* Panel de visualización de animaciones */
+.visualizacion {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.instrucciones {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #7f8c8d;
+}
+
+#iniciar {
+    display: block;
+    margin: 0 auto 30px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#iniciar:hover {
+    background-color: #2980b9;
+}
+
+.pista {
+    position: relative;
+    height: 20px;
+    margin: 30px 0;
+    border-bottom: 2px solid #ddd;
+}
+
+.marcador {
+    position: absolute;
+    top: 20px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.inicio {
+    left: 0;
+}
+
+.fin {
+    right: 0;
+}
+
+/* Contenedor de cajas para comparación */
+.caja-contenedor {
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.caja {
+    width: 60px;
+    height: 60px;
+    background-color: #3498db;
+    border-radius: 8px;
+    position: relative;
+    left: 0;
+    /* Cada caja tendrá su propia timing function definida más abajo */
+    transition: left 3s; /* Duración base de 3 segundos */
+}
+
+/* La clase 'animando' movera la caja a la derecha */
+.caja.animando {
+    left: calc(100% - 60px); /* Se mueve hasta el borde derecho */
+}
+
+.etiqueta {
+    position: absolute;
+    top: -25px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.grafica {
+    margin-left: 30px;
+    color: #7f8c8d;
+    flex-grow: 1;
+}
+
+/* Definición de las diferentes timing functions */
+
+/*
+ * ease (predeterminado)
+ * equivale a cubic-bezier(0.25, 0.1, 0.25, 1.0)
+ * Comienza rápido, termina lento
+ */
+.ease {
+    transition-timing-function: ease;
+}
+
+/*
+ * linear
+ * equivale a cubic-bezier(0, 0, 1, 1)
+ * Velocidad constante de inicio a fin
+ */
+.linear {
+    transition-timing-function: linear;
+}
+
+/*
+ * ease-in
+ * equivale a cubic-bezier(0.42, 0, 1, 1)
+ * Comienza lento y acelera al final
+ */
+.ease-in {
+    transition-timing-function: ease-in;
+}
+
+/*
+ * ease-out
+ * equivale a cubic-bezier(0, 0, 0.58, 1)
+ * Comienza rápido y desacelera al final
+ */
+.ease-out {
+    transition-timing-function: ease-out;
+}
+
+/*
+ * ease-in-out
+ * equivale a cubic-bezier(0.42, 0, 0.58, 1)
+ * Comienza y termina lento, acelera en el medio
+ */
+.ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+
+/*
+ * cubic-bezier personalizado
+ * Podemos definir cualquier curva con 4 valores
+ * Esta crea un efecto "rebote"
+ */
+.cubic-bezier {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/*
+ * steps
+ * Crea una animación escalonada en lugar de continua
+ * Útil para animaciones de sprites y efectos de máquina de escribir
+ */
+.steps {
+    transition-timing-function: steps(5, end);
+}
+
+/* Sección de explicación curvas de Bézier */
+.bezier-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.bezier-img {
+    flex: 1;
+    min-width: 300px;
+}
+
+.bezier-curve {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    position: relative;
+    background-color: #f8f9fa;
+}
+
+.curve {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Dibujamos una aproximación visual de una curva de Bézier */
+    background: linear-gradient(to bottom right, 
+                transparent 20%, rgba(52, 152, 219, 0.2) 40%,
+                rgba(52, 152, 219, 0.6) 60%, transparent 80%);
+    clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+.point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #3498db;
+    border-radius: 50%;
+}
+
+.p1 {
+    left: 30%;
+    top: 70%;
+}
+
+.p2 {
+    right: 30%;
+    top: 20%;
+}
+
+.bezier-texto {
+    flex: 2;
+    min-width: 300px;
+}
+
+.bezier-texto p {
+    margin-bottom: 15px;
+}
+
+/* Efecto máquina de escribir usando steps */
+.typing-demo {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid #3498db;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 2px;
+    animation: 
+        typing 3.5s steps(30, end),
+        blink-caret 0.75s step-end infinite;
+}
+
+.typewriter .text {
+    font-family: monospace;
+    font-size: 1.2rem;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #3498db }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 50px;
+}
+
+.navegacion {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.navegacion a {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.navegacion a:hover {
+    background-color: #2980b9;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .bezier-info {
+        flex-direction: column;
+    }
+    
+    .caja-contenedor {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .grafica {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .caja {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+}

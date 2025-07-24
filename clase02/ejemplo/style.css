@@ -1,0 +1,467 @@
+/* ===== RESET Y CONFIGURACIÓN BÁSICA ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== ENCABEZADO Y NAVEGACIÓN ===== */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Navegación */
+nav {
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+nav a strong {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+main {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    min-height: 500px;
+}
+
+/* Títulos */
+h1 {
+    color: #667eea;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    color: #764ba2;
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem 0;
+    border-left: 4px solid #764ba2;
+    padding-left: 1rem;
+}
+
+h3 {
+    color: #667eea;
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem 0;
+}
+
+h4 {
+    color: #764ba2;
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 600;
+}
+
+/* Párrafos y texto */
+p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+strong {
+    color: #667eea;
+    font-weight: 600;
+}
+
+em {
+    color: #764ba2;
+    font-style: italic;
+}
+
+/* ===== LISTAS ===== */
+ul,
+ol {
+    margin: 1rem 0 1rem 2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Listas en navegación no tienen estilo especial */
+nav ul,
+nav ol {
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 0;
+}
+
+/* ===== ENLACES ===== */
+a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* Enlaces especiales con emojis */
+main a[href*="sobre-mi"],
+main a[href*="contacto"],
+main a[href*="index"] {
+    display: inline-block;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    text-decoration: none;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+main a[href*="sobre-mi"]:hover,
+main a[href*="contacto"]:hover,
+main a[href*="index"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+/* Enlaces externos */
+a[href^="http"]:after,
+a[href^="mailto:"]:after,
+a[href^="tel:"]:after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* ===== IMÁGENES ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 1rem 0;
+    display: block;
+}
+
+/* Imágenes centradas en ciertas secciones */
+section img {
+    margin: 1rem auto;
+}
+
+/* ===== FORMULARIOS ===== */
+form {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-top: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+/* Campos de radio y checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+    accent-color: #667eea;
+}
+
+/* Botones */
+button,
+input[type="submit"] {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button[type="reset"] {
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+}
+
+/* ===== LÍNEAS HORIZONTALES ===== */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #667eea, transparent);
+    margin: 2rem 0;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #ecf0f1;
+}
+
+footer a:hover {
+    color: #667eea;
+}
+
+footer small {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* ===== ELEMENTOS ESPECIALES ===== */
+
+/* Sección destacada en la página principal */
+section {
+    margin-bottom: 2rem;
+}
+
+/* Estilo para párrafos con emojis */
+p:has(strong) {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-left: 4px solid #667eea;
+    border-radius: 0 5px 5px 0;
+    margin: 1rem 0;
+}
+
+/* Lista de habilidades técnicas vs personales */
+h4 + ul {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    body {
+        padding: 0 10px;
+    }
+
+    header {
+        padding: 1.5rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    nav a {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+    }
+
+    button,
+    input[type="submit"] {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        padding: 0.6rem;
+    }
+}
+
+/* ===== ANIMACIONES Y EFECTOS ESPECIALES ===== */
+
+/* Animación suave para elementos que aparecen */
+main {
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto hover para tarjetas de contenido */
+main:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Estilo especial para la página actual en navegación */
+nav a[href$=".html"]:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== UTILIDADES ===== */
+
+/* Texto centrado */
+.text-center {
+    text-align: center;
+}
+
+/* Margen superior */
+.mt-2 {
+    margin-top: 2rem;
+}
+
+/* Espaciado para párrafos especiales */
+.highlight {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+}

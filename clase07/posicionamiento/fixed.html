@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo: position fixed</title>
+  <style>
+    /* Esta caja estará fija en la parte superior izquierda de la pantalla */
+    .caja-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: crimson;
+      color: white;
+      padding: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elemento con posición fija -->
+  <div class="caja-fixed">
+    Soy un elemento FIXED (fijo). Siempre me verás aquí, incluso al hacer scroll.
+  </div>
+
+  <!-- Contenido para hacer scroll -->
+  <div style="margin-top: 100px;">
+    <p>Haz scroll para ver cómo la caja roja permanece visible en la parte superior.</p>
+    <p style="height: 2000px;">Este contenido solo sirve para generar scroll...</p>
+  </div>
+
+</body>
+</html>

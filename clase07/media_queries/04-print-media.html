@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Media Query para impresión</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+    }
+
+    /* Estilo especial cuando se imprime */
+    @media print {
+      body {
+        font-size: 18px;
+        color: red;
+        background-color: white;
+        /* Sin fondo al imprimir */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Ejemplo: Media Query para impresión</h1>
+  <p>Cuando imprimes esta página, cambia el tamaño del texto y el color.</p>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+h1 {
+    /*1*/
+    color: blue;
+}
+
+.titulo {
+    /*10*/
+    color: blueviolet !important;
+}
+
+#encabezado {
+    /*100*/
+    color: red;
+}

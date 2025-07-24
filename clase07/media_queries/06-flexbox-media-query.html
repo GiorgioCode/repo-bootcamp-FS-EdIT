@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Media Query con Flexbox</title>
+  <style>
+    .contenedor {
+      display: flex;
+      flex-direction: column; /* Dirección por defecto en columna */
+      gap: 10px;
+    }
+
+    .item {
+      background-color: peachpuff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Cuando la pantalla tenga al menos 600px de ancho, cambiar a fila */
+    @media (min-width: 600px) {
+      .contenedor {
+        flex-direction: row;
+        flex-wrap: wrap; /* Permitir que los elementos salten a la siguiente línea si no entran */
+      }
+      .item {
+        flex: 1 1 30%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejemplo: Media Query con Flexbox</h1>
+  <div class="contenedor">
+    <div class="item">Item A</div>
+    <div class="item">Item B</div>
+    <div class="item">Item C</div>
+    <div class="item">Item D</div>
+    <div class="item">Item E</div>
+  </div>
+</body>
+</html>

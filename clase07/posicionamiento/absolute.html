@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo: position absolute</title>
+  <style>
+    /* Este contenedor es relativo para que la caja absoluta se posicione respecto a él */
+    .contenedor {
+      position: relative;
+      background-color: #eee;
+      height: 200px;
+      width: 300px;
+      border: 1px solid black;
+      margin: 30px;
+    }
+
+    /* La caja se posiciona de forma absoluta dentro del contenedor */
+    .caja-absolute {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: teal;
+      color: white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contenedor con position: relative -->
+  <div class="contenedor">
+    Este es el contenedor relativo.
+    <!-- Caja posicionada absolutamente dentro del contenedor -->
+    <div class="caja-absolute">
+      Caja `absolute` posicionada arriba a la derecha
+    </div>
+  </div>
+
+</body>
+</html>
