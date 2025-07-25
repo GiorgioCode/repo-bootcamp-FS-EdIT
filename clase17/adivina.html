@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Adivina el Número</title>
+    <style>
+        /* Estilo general del cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e1f5fe;
+            /* Color de fondo suave */
+            text-align: center;
+            padding: 50px;
+        }
+
+        /* Título principal */
+        h1 {
+            color: #0277bd;
+        }
+
+        /* Estilos del botón */
+        button {
+            background-color: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Estilo del botón al pasar el mouse */
+        button:hover {
+            background-color: #01579b;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Título del juego -->
+    <h1>🎲 Juego: Adivina el Número</h1>
+    <p>Haz clic en el botón para comenzar.</p>
+
+    <!-- Botón para iniciar el juego -->
+    <button onclick="jugar()">¡Jugar!</button>
+
+    <script>
+        // Función principal que se ejecuta al hacer clic en el botón
+        function jugar() {
+            // ----------------------------
+            // GENERAR UN NÚMERO ALEATORIO
+            // ----------------------------
+
+            // Math.random() genera un número decimal aleatorio entre 0 (inclusive) y 1 (exclusivo).
+            // Al multiplicarlo por 10, obtenemos un número entre 0 y 9.999...
+            // Math.floor() redondea hacia abajo al número entero más cercano.
+            // Sumamos 1 para que el rango final sea de 1 a 10.
+            const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+
+            // Definimos la cantidad de intentos del jugador
+            let intentos = 3;
+
+            // Bucle que permite al jugador adivinar hasta quedarse sin intentos
+            while (intentos > 0) {
+                // Mostramos un cuadro para que el usuario escriba un número
+                let adivina = prompt(`Adivina un número del 1 al 10. Te quedan ${intentos} intento(s):`);
+
+                // Si el usuario presiona "Cancelar", se termina el juego
+                if (adivina === null) {
+                    alert("Juego cancelado.");
+                    return; // Finaliza la función
+                }
+
+                // Convertimos la entrada del usuario (cadena de texto) a un número
+                adivina = Number(adivina);
+
+                // ---------------------
+                // VALIDAR LA ENTRADA
+                // ---------------------
+
+                // isNaN(valor) devuelve true si "valor" no es un número.
+                // También validamos que esté entre 1 y 10 (inclusive).
+                if (isNaN(adivina) || adivina < 1 || adivina > 10) {
+                    alert("⚠️ Por favor, ingresa un número válido entre 1 y 10.");
+                    continue; // Repite el bucle sin restar un intento
+                }
+
+                // ---------------------
+                // COMPARAR CON SECRETO
+                // ---------------------
+
+                if (adivina === numeroSecreto) {
+                    // Si el usuario acierta el número
+                    alert("🎉 ¡Felicidades! Adivinaste el número.");
+                    return; // Finaliza el juego
+                } else if (adivina < numeroSecreto) {
+                    // Si el número ingresado es menor al número secreto
+                    alert("🔽 Muy bajo...");
+                } else {
+                    // Si el número ingresado es mayor al número secreto
+                    alert("🔼 Muy alto...");
+                }
+
+                // Resta un intento después de un intento fallido válido
+                intentos--;
+            }
+
+            // Si el jugador no adivinó en los 3 intentos
+            alert(`😢 Lo siento, perdiste. El número era ${numeroSecreto}.`);
+        }
+    </script>
+</body>
+
+</html>
