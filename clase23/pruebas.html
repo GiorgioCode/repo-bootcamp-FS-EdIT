@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo de Eventos en JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            height: 2000px;
+            /* Para que haya scroll */
+        }
+
+        .caja {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid blue;
+            transition: background-color 0.3s;
+        }
+
+        .caja:hover {
+            cursor: pointer;
+        }
+
+        #contador {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        #output {
+            margin-top: 10px;
+            color: green;
+        }
+
+        /* Área fija para mostrar coordenadas y scroll */
+        .infoFija {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border: 1px solid gray;
+            padding: 10px;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Demostración de Eventos en JavaScript</h1>
+
+    <div class="caja" id="cajaMouse">Pasa el mouse o haz clic</div>
+
+    <input type="text" id="inputTeclado" placeholder="Escribe algo..." />
+
+    <form id="formulario">
+        <input type="text" id="nombre" placeholder="Tu nombre" required />
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="output"></div>
+
+    <select id="selector">
+        <option value="">Selecciona una opción</option>
+        <option value="rojo">Rojo</option>
+        <option value="verde">Verde</option>
+        <option value="azul">Azul</option>
+    </select>
+
+    <div id="contador">Contador: 0</div>
+
+    <!-- Contenedor fijo para coordenadas y scroll -->
+    <div class="infoFija">
+        <div id="coords">X: 0 | Y: 0</div>
+        <div id="scrollPos">Scroll Y: 0</div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cajaMouse = document.getElementById("cajaMouse");
+            const inputTeclado = document.getElementById("inputTeclado");
+            const formulario = document.getElementById("formulario");
+            const nombreInput = document.getElementById("nombre");
+            const output = document.getElementById("output");
+            const selector = document.getElementById("selector");
+            const contadorDiv = document.getElementById("contador");
+            const coordsDiv = document.getElementById("coords");
+            const scrollPosDiv = document.getElementById("scrollPos");
+
+            // Evento de clic
+            cajaMouse.addEventListener("click", function () {
+                alert("¡Hiciste clic en la caja!");
+            });
+
+            // Evento mouseover
+            cajaMouse.addEventListener("mouseover", function () {
+                cajaMouse.style.backgroundColor = "lightgreen";
+            });
+
+            // Evento mouseout
+            cajaMouse.addEventListener("mouseout", function () {
+                cajaMouse.style.backgroundColor = "lightblue";
+            });
+
+            // Evento de teclado
+            inputTeclado.addEventListener("keydown", function (event) {
+                console.log("Tecla presionada:", event.key);
+            });
+
+            // Evento de formulario
+            formulario.addEventListener("submit", function (event) {
+                event.preventDefault();
+                const nombre = nombreInput.value;
+                output.textContent = `Hola, ${nombre}! Formulario enviado correctamente.`;
+            });
+
+            // Evento de cambio
+            selector.addEventListener("change", function () {
+                const colorSeleccionado = selector.value;
+                output.textContent = `Color seleccionado: ${colorSeleccionado}`;
+            });
+
+            // Temporizador
+            let contador = 0;
+            setInterval(function () {
+                contador++;
+                contadorDiv.textContent = `Contador: ${contador}`;
+            }, 1000);
+
+            // ✅ Evento para obtener coordenadas del mouse
+            document.addEventListener("mousemove", function (event) {
+                coordsDiv.textContent = `X: ${event.clientX} | Y: ${event.clientY}`;
+            });
+
+            // ✅ Evento para detectar scroll
+            window.addEventListener("scroll", function () {
+                scrollPosDiv.textContent = `Scroll Y: ${window.scrollY}`;
+            });
+        });
+    </script>
+</body>
+
+</html>

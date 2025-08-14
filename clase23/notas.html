@@ -1,0 +1,221 @@
+<!DOCTYPE html> <!-- Indica que este documento es HTML5 -->
+<html lang="es"> <!-- Comienza el documento HTML y define el idioma como español -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 -->
+    <title>Gestor de Notas Rápidas</title> <!-- Título de la pestaña del navegador -->
+
+    <style>
+        /* Estilos generales del cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;
+            /* Fuente de texto */
+            background: #EED09D;
+            /*COLOR CORCHO*/
+            /* Color de fondo */
+            padding: 20px;
+            /* Espaciado interior */
+            max-width: 900px;
+            /* Ancho máximo del contenido */
+            margin: auto;
+            /* Centrado horizontal */
+        }
+
+        /* Estilo para el título principal */
+        h1 {
+            text-align: center;
+            /* Centrado horizontal del texto */
+            color: #333;
+            /* Color del texto */
+        }
+
+        /* Estilo para el formulario */
+        form {
+            display: flex;
+            /* Distribuye elementos en fila */
+            gap: 10px;
+            /* Espacio entre elementos */
+            margin-bottom: 20px;
+            /* Espacio inferior */
+        }
+
+        /* Estilo del área de texto */
+        textarea {
+            flex: 1;
+            /* Ocupa el espacio restante disponible */
+            padding: 10px;
+            /* Espaciado interior */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            border: 1px solid #ccc;
+            /* Borde gris claro */
+            resize: none;
+            /* No permite cambiar tamaño */
+        }
+
+        /* Estilo del botón */
+        button {
+            padding: 10px 15px;
+            /* Espaciado interior */
+            border: none;
+            /* Sin borde */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            background-color: #00a8ff;
+            /* Color de fondo */
+            color: white;
+            /* Color del texto */
+            cursor: pointer;
+            /* Cursor tipo mano al pasar */
+        }
+
+        /* Estilo del botón al pasar el mouse */
+        button:hover {
+            background-color: #0097e6;
+            /* Cambio de color al pasar el mouse */
+        }
+
+        /* Estilo del contenedor de notas */
+        #contenedorNotas {
+            display: grid;
+            /* Usa sistema de cuadrícula */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* Columnas responsivas */
+            gap: 15px;
+            /* Espacio entre notas */
+        }
+
+        /* Estilo individual de cada nota */
+        .nota {
+            padding: 10px;
+            /* Espaciado interior */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            /* Sombra */
+            position: relative;
+            /* Necesario para posicionar el botón de eliminar */
+            white-space: pre-wrap;
+            /* Conserva saltos de línea */
+            word-wrap: break-word;
+            /* Rompe palabras largas */
+            min-height: 80px;
+            /* Altura mínima */
+            height: auto;
+            /* Altura automática según contenido */
+            min-width: 150px;
+            /* Ancho mínimo */
+            max-width: 100%;
+            /* Evita que se salga del contenedor */
+        }
+
+        /* Estilo del botón de eliminar dentro de cada nota */
+        .btnEliminar {
+            position: absolute;
+            /* Posicionamiento absoluto respecto a la nota */
+            top: 5px;
+            /* Alineado arriba */
+            right: 5px;
+            /* Alineado a la derecha */
+            background: rgba(0, 0, 0, 0.3);
+            /* Fondo negro semitransparente */
+            color: white;
+            /* Texto blanco */
+            border: none;
+            /* Sin borde */
+            cursor: pointer;
+            /* Cursor tipo mano */
+            border-radius: 3px;
+            /* Bordes redondeados */
+            padding: 2px 5px;
+            /* Tamaño pequeño */
+            font-size: 0.8rem;
+            /* Tamaño de fuente reducido */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Gestor de Notas Rápidas</h1> <!-- Título principal de la página -->
+
+    <!-- Formulario para ingresar nuevas notas -->
+    <form id="formulario">
+        <textarea id="textoNota" rows="3" placeholder="Escribe tu nota..." required></textarea> <!-- Área de texto -->
+        <button type="submit">Agregar</button> <!-- Botón para agregar nota -->
+    </form>
+
+    <!-- Contenedor donde se mostrarán las notas -->
+    <div id="contenedorNotas"></div>
+
+    <!-- Script JavaScript para la lógica -->
+    <script>
+        // Obtiene referencias a los elementos HTML
+        const formulario = document.getElementById("formulario");
+        const textoNota = document.getElementById("textoNota");
+        const contenedorNotas = document.getElementById("contenedorNotas");
+
+        // Carga las notas desde localStorage, o usa un arreglo vacío si no hay ninguna
+        let notas = JSON.parse(localStorage.getItem("notas")) || [];
+
+        // Función para obtener un color aleatorio de un conjunto predefinido
+        function colorAleatorio() {
+            const colores = ["#fffa65", "#ff9ff3", "#7efff5", "#feca57", "#ff6b6b", "#48dbfb"];
+            return colores[Math.floor(Math.random() * colores.length)]; // Devuelve un color al azar
+        }
+
+        // Guarda el array de notas en localStorage en formato JSON
+        function guardarNotas() {
+            localStorage.setItem("notas", JSON.stringify(notas));
+        }
+
+        // Función que muestra todas las notas en el contenedor
+        function renderizarNotas() {
+            contenedorNotas.innerHTML = ""; // Limpia el contenedor antes de renderizar
+
+            // Recorre cada nota
+            notas.forEach((nota, indice) => {
+                const div = document.createElement("div"); // Crea un div para la nota
+                div.classList.add("nota"); // Aplica clase CSS
+                div.style.backgroundColor = nota.color; // Aplica color de fondo
+                div.textContent = nota.texto; // Inserta el texto de la nota
+
+                // Crea el botón para eliminar la nota
+                const btnEliminar = document.createElement("button");
+                btnEliminar.textContent = "X"; // Texto del botón
+                btnEliminar.classList.add("btnEliminar"); // Aplica clase CSS
+
+                // Evento al hacer clic en "X": elimina la nota
+                btnEliminar.addEventListener("click", () => {
+                    notas.splice(indice, 1); // Elimina la nota del array
+                    guardarNotas(); // Guarda los cambios en localStorage
+                    renderizarNotas(); // Vuelve a renderizar las notas
+                });
+
+                div.appendChild(btnEliminar); // Agrega el botón dentro del div
+                contenedorNotas.appendChild(div); // Agrega la nota al contenedor
+            });
+        }
+
+        // Evento al enviar el formulario (agregar nueva nota)
+        formulario.addEventListener("submit", (e) => {
+            e.preventDefault(); // Previene el envío del formulario (recarga de página)
+
+            const texto = textoNota.value.trim(); // Obtiene el texto y elimina espacios
+            if (texto) { // Verifica que no esté vacío
+                // Agrega una nueva nota al array
+                notas.push({ texto, color: colorAleatorio() });
+
+                guardarNotas(); // Guarda las notas en localStorage
+                renderizarNotas(); // Muestra la nueva nota
+                textoNota.value = ""; // Limpia el textarea
+            }
+        });
+
+        // Llama a la función para mostrar las notas al cargar la página
+        renderizarNotas();
+    </script>
+
+</body>
+
+</html>

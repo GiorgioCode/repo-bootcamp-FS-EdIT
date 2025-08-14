@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tareas Persistente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2f3640;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00a8ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0097e6;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li.completada span {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .acciones button {
+            margin-left: 5px;
+            background-color: #e84118;
+        }
+
+        .acciones button:first-child {
+            background-color: #44bd32;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lista de Tareas</h1>
+
+    <form id="formulario">
+        <input type="text" id="nuevaTarea" placeholder="Escribe una tarea..." required>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <ul id="listaTareas"></ul>
+
+    <script>
+        // Referencias a los elementos del DOM
+        const listaTareas = document.getElementById("listaTareas"); // UL donde se mostrarán las tareas
+        const formulario = document.getElementById("formulario");   // Formulario para agregar tareas
+        const inputTarea = document.getElementById("nuevaTarea");   // Campo de texto de la nueva tarea
+
+        // Recuperar tareas guardadas desde localStorage o iniciar un array vacío
+        let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+        // JSON.parse() convierte el string almacenado en localStorage en un array de objetos
+        // Si no hay nada en localStorage, usamos un array vacío []
+
+        // Función para guardar las tareas en localStorage
+        function guardarTareas() {
+            localStorage.setItem("tareas", JSON.stringify(tareas));
+            // JSON.stringify() convierte el array de tareas a string para poder guardarlo
+        }
+
+        // Función para mostrar las tareas en pantalla
+        function renderizarTareas() {
+            listaTareas.innerHTML = ""; // Limpia la lista antes de volver a generarla
+            tareas.forEach((tarea, indice) => { // Recorremos cada tarea del array
+                const li = document.createElement("li"); // Creamos un <li> para la tarea
+                if (tarea.completada) li.classList.add("completada"); // Si está completada, agregamos clase CSS
+
+                const span = document.createElement("span"); // Creamos un <span> para el texto
+                span.textContent = tarea.texto; // Ponemos el texto de la tarea dentro del span
+
+                const acciones = document.createElement("div"); // Contenedor para los botones
+                acciones.classList.add("acciones"); // Clase para estilos
+
+                // Botón para marcar como completada
+                const btnCompletar = document.createElement("button");
+                btnCompletar.textContent = "✔"; // Icono de check
+                btnCompletar.addEventListener("click", () => { // Evento click
+                    tareas[indice].completada = !tareas[indice].completada; // Cambiamos el estado de completada
+                    guardarTareas(); // Guardamos cambios en localStorage
+                    renderizarTareas(); // Volvemos a dibujar la lista
+                });
+
+                // Botón para eliminar la tarea
+                const btnEliminar = document.createElement("button");
+                btnEliminar.textContent = "🗑"; // Icono de papelera
+                btnEliminar.addEventListener("click", () => { // Evento click
+                    tareas.splice(indice, 1); // Eliminamos la tarea del array
+                    guardarTareas(); // Guardamos cambios en localStorage
+                    renderizarTareas(); // Volvemos a dibujar la lista
+                });
+
+                // Agregar botones al contenedor de acciones
+                acciones.appendChild(btnCompletar);
+                acciones.appendChild(btnEliminar);
+
+                // Agregar el texto y las acciones al li
+                li.appendChild(span);
+                li.appendChild(acciones);
+
+                // Agregar el li a la lista UL
+                listaTareas.appendChild(li);
+            });
+        }
+
+        // Evento para agregar una nueva tarea desde el formulario
+        formulario.addEventListener("submit", (e) => {
+            e.preventDefault(); // Evita que el formulario recargue la página
+            const texto = inputTarea.value.trim(); // Obtiene el texto quitando espacios en blanco
+            if (texto) { // Solo agregar si no está vacío
+                tareas.push({ texto, completada: false }); // Agregamos un nuevo objeto tarea
+                guardarTareas(); // Guardamos en localStorage
+                renderizarTareas(); // Mostramos la nueva lista
+                inputTarea.value = ""; // Limpiamos el campo de texto
+            }
+        });
+
+        // Mostrar las tareas guardadas al cargar la página
+        renderizarTareas();
+    </script>
+
+</body>
+
+</html>

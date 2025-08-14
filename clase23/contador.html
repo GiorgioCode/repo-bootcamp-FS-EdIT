@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contador con LocalStorage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #contador {
+            font-size: 3rem;
+            margin: 20px 0;
+            color: #0077b6;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #sumar {
+            background-color: #0096c7;
+            color: white;
+        }
+
+        #reset {
+            background-color: #ef233c;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Contador Persistente</h1>
+    <p>El valor se guarda en <code>localStorage</code> y no se pierde al recargar.</p>
+    <div id="contador">0</div>
+    <button id="sumar">➕ Sumar</button>
+    <button id="reset">♻ Resetear</button>
+
+    <script>
+        // --- Recuperar valor guardado en localStorage ---
+        // Si no existe, usamos 0 como valor inicial
+        let contador = localStorage.getItem("contador")
+            ? parseInt(localStorage.getItem("contador"))
+            : 0;
+
+        const contadorElemento = document.getElementById("contador");
+        const btnSumar = document.getElementById("sumar");
+        const btnReset = document.getElementById("reset");
+
+        // Función para actualizar el texto y guardar en localStorage
+        function actualizarContador() {
+            contadorElemento.textContent = contador;
+            localStorage.setItem("contador", contador);
+        }
+
+        // Evento: sumar al contador
+        btnSumar.addEventListener("click", () => {
+            contador++;
+            actualizarContador();
+        });
+
+        // Evento: resetear contador
+        btnReset.addEventListener("click", () => {
+            contador = 0;
+            actualizarContador();
+        });
+
+        // Mostrar valor inicial al cargar
+        actualizarContador();
+    </script>
+</body>
+
+</html>
