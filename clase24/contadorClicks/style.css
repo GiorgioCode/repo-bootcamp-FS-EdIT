@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aliceblue;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: cadetblue;
+}
+
+#contador {
+    font-size: 3rem;
+    margin: 20px 0;
+    color: blue;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+#sumar {
+    background-color: cornflowerblue;
+    color: aliceblue;
+}
+#sumar10 {
+    background-color: rgb(0, 89, 255);
+    color: aliceblue;
+}
+#restar {
+    background-color: rgb(255, 138, 22);
+    color: aliceblue;
+}
+#reset {
+    background-color: brown;
+    color: aliceblue;
+}
