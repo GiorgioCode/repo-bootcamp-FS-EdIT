@@ -1,0 +1,32 @@
+.drop-zone {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    width: 300px;
+    height: 200px;
+    border: 2px dashed black;
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.drop-zone.dragover {
+    background-color: aqua;
+    border-color: blue;
+}
+.progress-bar {
+    width: 300px;
+    height: 20px;
+    background-color: blue;
+    border-radius: 10px;
+    margin: 20px auto;
+    overflow: hidden;
+    display: none;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background-color: azure;
+    transition: width 0.3s ease-in-out;
+}
