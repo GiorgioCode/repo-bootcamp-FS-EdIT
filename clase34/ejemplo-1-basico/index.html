@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Básica - Hash Routing</title>
+    <style>
+        nav { background: #f0f0f0; padding: 10px; }
+        nav a { margin-right: 10px; }
+        .page { display: none; padding: 10px; }
+        .page.active { display: block; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#home">Inicio</a>
+        <a href="#about">Acerca de</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+
+    <div id="app">
+        <div id="home" class="page">
+            <h2>🏠 Página de Inicio</h2>
+            <p>Bienvenido a nuestra SPA básica usando hash routing.</p>
+            <p>URL actual: <span id="current-hash"></span></p>
+        </div>
+
+        <div id="about" class="page">
+            <h2>ℹ️ Acerca de</h2>
+            <p>Esta es una Single Page Application que usa location.hash para la navegación.</p>
+            <p>No hay recarga de página, solo cambio de contenido.</p>
+        </div>
+
+        <div id="contact" class="page">
+            <h2>📧 Contacto</h2>
+            <p>Contáctanos en: ejemplo@spa.com</p>
+            <p>Teléfono: +123 456 789</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

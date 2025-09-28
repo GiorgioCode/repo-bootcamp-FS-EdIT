@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Avanzada - Router Completo</title>
+    <style>
+        header { background: #f0f0f0; padding: 10px; }
+        nav a { margin-right: 10px; }
+        nav a.active { background: #ccc; padding: 5px; }
+        .page { display: none; padding: 10px; }
+        .page.active { display: block; }
+        .breadcrumb { background: #f9f9f9; padding: 5px; margin-bottom: 10px; }
+        .user-card { background: #f9f9f9; padding: 10px; margin: 10px 0; }
+        .product-item { background: #f9f9f9; padding: 10px; margin: 5px; }
+        .error { background: #ffe6e6; padding: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 SPA Avanzada</h1>
+        <nav>
+            <a href="/" data-route>🏠 Inicio</a>
+            <a href="/products" data-route>📦 Productos</a>
+            <a href="/users" data-route>👥 Usuarios</a>
+            <a href="/about" data-route>ℹ️ Acerca de</a>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <span id="breadcrumb">Inicio</span>
+    </div>
+
+    <div id="app">
+            <!-- Página de Inicio -->
+            <div id="home" class="page">
+                <h2>🏠 Bienvenido a la SPA Avanzada</h2>
+                <p>Esta aplicación demuestra un sistema de routing completo con:</p>
+                <ul>
+                    <li>✅ Rutas dinámicas con parámetros</li>
+                    <li>✅ Navegación programática</li>
+                    <li>✅ Manejo de errores 404</li>
+                    <li>✅ Breadcrumbs automáticos</li>
+                </ul>
+                <p><strong>Prueba:</strong> <a href="/users/123" data-route>Ver Usuario #123</a></p>
+            </div>
+
+            <!-- Lista de Productos -->
+            <div id="products" class="page">
+                <h2>📦 Catálogo de Productos</h2>
+                <div id="product-list"></div>
+            </div>
+
+            <!-- Lista de Usuarios -->
+            <div id="users" class="page">
+                <h2>👥 Lista de Usuarios</h2>
+                <div id="user-list"></div>
+            </div>
+
+            <!-- Detalle de Usuario -->
+            <div id="user-detail" class="page">
+                <h2>👤 Detalle de Usuario</h2>
+                <div id="user-info"></div>
+                <button onclick="router.navigate('/users')">⬅️ Volver a Lista</button>
+            </div>
+
+            <!-- Acerca de -->
+            <div id="about" class="page">
+                <h2>ℹ️ Acerca de Esta SPA</h2>
+                <p>Desarrollada con JavaScript vanilla para demostrar conceptos avanzados de routing.</p>
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li>Router con parámetros dinámicos</li>
+                    <li>History API completa</li>
+                    <li>Manejo de estados</li>
+                    <li>Navegación fluida</li>
+                </ul>
+            </div>
+
+            <!-- Página 404 -->
+            <div id="not-found" class="page">
+                <div class="error">
+                    <h2>❌ Página No Encontrada</h2>
+                    <p>La ruta solicitada no existe.</p>
+                    <a href="/" data-route>🏠 Ir al Inicio</a>
+                </div>
+            </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

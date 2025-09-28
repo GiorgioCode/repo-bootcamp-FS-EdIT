@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Intermedia - History API</title>
+    <style>
+        nav { background: #f0f0f0; padding: 10px; }
+        nav button { margin-right: 10px; }
+        nav button.active { background: #ccc; }
+        .page { display: none; padding: 10px; }
+        .page.active { display: block; }
+        .url-info { background: #f9f9f9; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <nav>
+        <button onclick="navigateTo('/home')">🏠 Inicio</button>
+        <button onclick="navigateTo('/products')">📦 Productos</button>
+        <button onclick="navigateTo('/profile')">👤 Perfil</button>
+    </nav>
+
+    <div class="url-info">
+        <strong>URL actual:</strong> <span id="current-url"></span><br>
+        <strong>Pathname:</strong> <span id="current-path"></span>
+    </div>
+
+    <div id="app">
+        <div id="home" class="page">
+            <h2>🏠 Página de Inicio</h2>
+            <p>Esta SPA usa <strong>History API</strong> para navegación sin hash.</p>
+            <p>Observa que la URL cambia completamente, no solo el fragmento.</p>
+            <p>
+                <button onclick="history.back()">⬅️ Atrás</button>
+                <button onclick="history.forward()">➡️ Adelante</button>
+            </p>
+        </div>
+
+        <div id="products" class="page">
+            <h2>📦 Productos</h2>
+            <p>Lista de productos disponibles:</p>
+            <ul>
+                <li>Producto A - $100</li>
+                <li>Producto B - $200</li>
+                <li>Producto C - $300</li>
+            </ul>
+        </div>
+
+        <div id="profile" class="page">
+            <h2>👤 Perfil de Usuario</h2>
+            <p><strong>Nombre:</strong> Juan Pérez</p>
+            <p><strong>Email:</strong> juan@ejemplo.com</p>
+            <p><strong>Última visita:</strong> <span id="last-visit"></span></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
