@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React con CDN - Ejemplo Comentado</title>
+
+    <!--
+    1) Importamos React y ReactDOM desde un CDN (unpkg).
+       - `react.development.js` y `react-dom.development.js` son versiones para desarrollo.
+       - En producción usarías las versiones *minificadas* (react.production.min.js).
+  -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!--
+    2) Babel standalone permite escribir JSX y características modernas dentro del navegador.
+       - Esto es conveniente para ejemplos/learning, pero NO es recomendado para producción.
+       - Babel transpila el código en el cliente.
+  -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!--
+    3) Contenedor donde React "montará" la aplicación.
+       - React reemplazará el contenido de este div con la UI declarada en los componentes.
+  -->
+    <div id="root"></div>
+
+    <!--
+    4) Nuestro código React. Usamos type="text/babel" para que Babel lo transforme a JS compatible.
+       - Dentro de este bloque puedes usar JSX y las APIs de React.
+  -->
+    <script type="text/babel">
+        // ----------------------------
+        // PASO A PASO EN EL CÓDIGO JS
+        // ----------------------------
+
+        // Paso 1: Componente simple de presentación
+        // - Este componente solo devuelve un título.
+        function Encabezado() {
+            // Aquí devolvemos un elemento JSX (<h1>).
+            return <h1>Lista de Tareas</h1>;
+        }
+
+        // Paso 2: Componente principal con estado y lógica
+        function App() {
+            // 2.1 Definimos el estado 'tareas' (array) y su actualizador 'setTareas'.
+            //     Inicialmente la lista está vacía.
+            const [tareas, setTareas] = React.useState([]);
+
+            // 2.2 Estado para el contenido del input (campo controlado).
+            //     'nuevaTarea' contiene el texto que escribe el usuario.
+            const [nuevaTarea, setNuevaTarea] = React.useState("");
+
+            // Paso 3: Función para agregar una nueva tarea:
+            const agregarTarea = () => {
+                // 3.1 Evitamos agregar strings vacíos o solo espacios.
+                if (nuevaTarea.trim() !== "") {
+                    // 3.2 Actualizamos el estado creando un nuevo array a partir del anterior.
+                    //      Esto sigue la regla de inmutabilidad: **no** mutamos 'tareas' directamente.
+                    setTareas([...tareas, nuevaTarea.trim()]);
+
+                    // 3.3 Limpiamos el input (ponemos el estado a cadena vacía).
+                    setNuevaTarea("");
+                }
+            };
+
+            // Paso 4: Función para eliminar una tarea por índice
+            const eliminarTarea = (indexToRemove) => {
+                // Filtramos las tareas y dejamos todas menos la que coincide con el índice.
+                setTareas(tareas.filter((_, i) => i !== indexToRemove));
+            };
+
+            // Paso 5: Renderizamos la UI del componente
+            return (
+                <div>
+                    {/* 5.1 Insertamos el componente de encabezado */}
+                    <Encabezado />
+
+                    {/* 5.2 Input controlado: value viene del estado 'nuevaTarea' y onChange lo actualiza */}
+                    <input
+                        type="text"
+                        value={nuevaTarea}
+                        placeholder="Escribe una tarea..."
+                        onChange={(e) => setNuevaTarea(e.target.value)} // Actualiza el estado cuando el usuario escribe
+                    />
+
+                    {/* 5.3 Botón que llama a agregarTarea al hacer clic */}
+                    <button onClick={agregarTarea}>Agregar</button>
+
+                    {/* 5.4 Lista de tareas:
+                - Usamos tareas.map para transformar cada tarea en un <li>.
+                - Usamos key={index} para ayudar a React a identificar elementos. */}
+                    <ul>
+                        {tareas.map((tarea, index) => (
+                            <li key={index}>
+                                {tarea}
+                                {/*
+                  Botón "Eliminar" que llama a eliminarTarea con el índice correspondiente.
+                  Usamos una función flecha para evitar ejecutar la función al renderizar.
+                */}
+                                <button onClick={() => eliminarTarea(index)}>Eliminar</button>
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* 5.5 Mensaje condicional: si no hay tareas mostramos un texto informativo */}
+                    {tareas.length === 0 && <p>No hay tareas. Agrega la primera.</p>}
+                </div>
+            );
+        }
+
+        // Paso 6: Montaje / Renderizado
+        // - Seleccionamos el elemento con id 'root' y creamos la "raíz" de React.
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // - Renderizamos el componente <App /> dentro de esa raíz.
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React con CDN</title>
+    <!-- Importamos React y ReactDOM desde un CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel nos permitirá usar JSX directamente en el navegador -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- Aquí montaremos nuestra app -->
+    <div id="root"></div>
+
+    <!-- Nuestro código React -->
+    <script type="text/babel">
+        // Componente funcional
+        function Saludo(props) {
+            return <h1>Hola, {props.nombre}!</h1>;
+        }
+
+        // Renderizamos el componente en el div con id="root"
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<Saludo nombre="Mundo" />);
+    </script>
+</body>
+
+</html>
