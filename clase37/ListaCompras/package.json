@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@picocss/pico": "^2.1.1",
+    "@tinymce/tinymce-react": "^6.3.0"
+  }
+}
