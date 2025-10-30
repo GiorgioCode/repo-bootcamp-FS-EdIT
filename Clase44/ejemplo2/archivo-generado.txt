@@ -1,0 +1,1 @@
+Contenido de ejemplo para el archivo que se va a generar
