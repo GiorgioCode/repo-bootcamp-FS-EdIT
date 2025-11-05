@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 async function main() {
     await mongoose.connect(
-        "mongodb+srv://api_user:perrogordo123@prueba.8ulixbw.mongodb.net/?appName=prueba"
+        "mongodb+srv://api_user:#####@prueba.8ulixbw.mongodb.net/?appName=prueba"
     );
     console.log("conectado a MongoDB");
     const userSchema = new mongoose.Schema({

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 mongoose
     .connect(
-        "mongodb+srv://api_user:perrogordo123@prueba.8ulixbw.mongodb.net/?appName=prueba"
+        "mongodb+srv://api_user:#####@prueba.8ulixbw.mongodb.net/?appName=prueba"
     )
     .then(() => console.log("conectado a mongoDB"))
     .catch((err) => console.error("Error de conexion:", err));
