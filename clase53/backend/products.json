@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Camiseta Premium",
+    "description": "Camiseta de algodón 100% de alta calidad",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+    "category": "Ropa"
+  },
+  {
+    "id": 2,
+    "name": "Zapatillas Deportivas",
+    "description": "Zapatillas cómodas para running y entrenamiento",
+    "price": 8500,
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop",
+    "category": "Calzado"
+  },
+  {
+    "id": 3,
+    "name": "Mochila Urbana",
+    "description": "Mochila resistente con compartimento para laptop",
+    "price": 4200,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop",
+    "category": "Accesorios"
+  },
+  {
+    "id": 4,
+    "name": "Auriculares Bluetooth",
+    "description": "Auriculares inalámbricos con cancelación de ruido",
+    "price": 5900,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
+    "category": "Electrónica"
+  },
+  {
+    "id": 5,
+    "name": "Reloj Inteligente",
+    "description": "Smartwatch con monitor de salud y fitness",
+    "price": 12000,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
+    "category": "Electrónica"
+  },
+  {
+    "id": 6,
+    "name": "Gafas de Sol",
+    "description": "Gafas con protección UV y diseño moderno",
+    "price": 3200,
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop",
+    "category": "Accesorios"
+  }
+]
