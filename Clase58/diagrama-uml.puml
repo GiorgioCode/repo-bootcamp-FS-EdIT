@@ -1,0 +1,168 @@
+@startuml School-TS Class Diagram
+
+' Configuración de estilo
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam class {
+    BackgroundColor LightYellow
+    BorderColor Black
+    ArrowColor Blue
+}
+
+' ========================================
+' CLASE ABSTRACTA: Person
+' ========================================
+abstract class Person {
+    ' Propiedades
+    + id: number
+    # name: string
+    
+    ' Constructor
+    + Person(id: number, name: string)
+    
+    ' Métodos
+    + getName(): string
+    + setName(newName: string): void
+    {abstract} + describe(): string
+}
+
+note right of Person
+  Clase abstracta que define
+  la estructura base para todas
+  las personas del sistema.
+  No se puede instanciar directamente.
+end note
+
+' ========================================
+' CLASE: Student (Estudiante)
+' ========================================
+class Student {
+    ' Propiedad específica
+    + grade: number
+    
+    ' Constructor
+    + Student(id: number, name: string, grade: number)
+    
+    ' Métodos
+    + describe(): string
+    + isPassing(): boolean
+}
+
+note right of Student
+  Representa un estudiante.
+  Hereda de Person y agrega
+  funcionalidad relacionada
+  con calificaciones.
+end note
+
+' ========================================
+' CLASE: Teacher (Profesor)
+' ========================================
+class Teacher {
+    ' Propiedad específica
+    - subject: string
+    
+    ' Constructor
+    + Teacher(id: number, name: string, subject: string)
+    
+    ' Métodos
+    + describe(): string
+    + getSubject(): string
+}
+
+note right of Teacher
+  Representa un profesor.
+  Hereda de Person y agrega
+  funcionalidad relacionada
+  con la materia que enseña.
+end note
+
+' ========================================
+' CLASE GENÉRICA: Repository<T>
+' ========================================
+class "Repository<T extends {id: number}>" as Repository {
+    ' Propiedades
+    - items: T[]
+    
+    ' Métodos CRUD
+    + add(item: T): void
+    + getById(id: number): T | undefined
+    + getAll(): T[]
+    + removeById(id: number): boolean
+}
+
+note right of Repository
+  Repositorio genérico que
+  gestiona colecciones de datos.
+  Implementa operaciones CRUD
+  (Create, Read, Update, Delete).
+  
+  T debe tener propiedad 'id: number'
+end note
+
+' ========================================
+' CLASE: SchoolService (Servicio Escolar)
+' ========================================
+class SchoolService {
+    ' Propiedades privadas
+    - studentRepo: Repository<Student>
+    - teacherRepo: Repository<Teacher>
+    
+    ' Constructor
+    + SchoolService(studentRepo: Repository<Student>, teacherRepo: Repository<Teacher>)
+    
+    ' Métodos de lógica de negocio
+    + enrollStudent(student: Student): void
+    + averageGrade(): number
+    + passingStudents(): Student[]
+    + hireTeacher(teacher: Teacher): void
+    + describeAll(): string[]
+}
+
+note right of SchoolService
+  Service Layer que coordina
+  la lógica de negocio entre
+  múltiples repositorios.
+  
+  Implementa:
+  - Inscripción de estudiantes
+  - Contratación de profesores
+  - Cálculos de promedios
+  - Filtrado de estudiantes
+end note
+
+' ========================================
+' RELACIONES DE HERENCIA
+' ========================================
+Person <|-- Student : extends
+Person <|-- Teacher : extends
+
+' ========================================
+' RELACIONES DE COMPOSICIÓN
+' SchoolService CONTIENE repositorios
+' ========================================
+SchoolService *-- "1" Repository : studentRepo
+SchoolService *-- "1" Repository : teacherRepo
+
+' ========================================
+' RELACIONES DE DEPENDENCIA
+' Repository puede almacenar Student y Teacher
+' ========================================
+Repository .> Student : <<uses>>
+Repository .> Teacher : <<uses>>
+
+' ========================================
+' LEYENDA
+' ========================================
+legend bottom
+|= Símbolo |= Significado |
+| <|-- | Herencia (extends) |
+| *-- | Composición (contiene) |
+| .> | Dependencia (usa) |
+| + | Public |
+| # | Protected |
+| - | Private |
+| {abstract} | Método abstracto |
+endlegend
+
+@enduml

@@ -1,0 +1,73 @@
+@startuml School-TS Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam class {
+    BackgroundColor LightYellow
+    BorderColor Black
+    ArrowColor Blue
+}
+
+abstract class Person {
+    + id: number
+    # name: string
+    + Person(id: number, name: string)
+    + getName(): string
+    + setName(newName: string): void
+    {abstract} + describe(): string
+}
+
+class Student {
+    + grade: number
+    + Student(id: number, name: string, grade: number)
+    + describe(): string
+    + isPassing(): boolean
+}
+
+class Teacher {
+    - subject: string
+    + Teacher(id: number, name: string, subject: string)
+    + describe(): string
+    + getSubject(): string
+}
+
+class "Repository<T extends {id: number}>" as Repository {
+    - items: T[]
+    + add(item: T): void
+    + getById(id: number): T | undefined
+    + getAll(): T[]
+    + removeById(id: number): boolean
+}
+
+class SchoolService {
+    - studentRepo: Repository<Student>
+    - teacherRepo: Repository<Teacher>
+    + SchoolService(studentRepo: Repository<Student>, teacherRepo: Repository<Teacher>)
+    + enrollStudent(student: Student): void
+    + averageGrade(): number
+    + passingStudents(): Student[]
+    + hireTeacher(teacher: Teacher): void
+    + describeAll(): string[]
+}
+
+Person <|-- Student : extends
+Person <|-- Teacher : extends
+
+SchoolService *-- "1" Repository : studentRepo
+SchoolService *-- "1" Repository : teacherRepo
+
+Repository ..> Student : <<uses>>
+Repository ..> Teacher : <<uses>>
+
+legend bottom
+|= Símbolo |= Significado |
+| <|-- | Herencia (extends) |
+| *-- | Composición (contiene) |
+| ..> | Dependencia (usa) |
+| + | Public |
+| # | Protected |
+| - | Private |
+| {abstract} | Método abstracto |
+endlegend
+
+@enduml
